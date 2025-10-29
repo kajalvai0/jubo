@@ -4,14 +4,591 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>কর্জে হাসানা - যুব জামায়াত বদলগাছী</title>
-    <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+        }
+
+        /* Navigation */
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .logo i {
+            font-size: 2rem;
+            color: #059669;
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            color: #1f2937;
+        }
+
+        .logo-text p {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #4b5563;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #059669;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #1f2937;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #059669 0%, #0d9488 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .hero p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Quran Verses */
+        .quran-section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: #1f2937;
+            margin-bottom: 3rem;
+        }
+
+        .quran-verse {
+            background: #ecfdf5;
+            border-right: 4px solid #059669;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+        }
+
+        .quran-verse p {
+            color: #1f2937;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .quran-reference {
+            color: #059669;
+            font-weight: bold;
+            text-align: right;
+        }
+
+        /* Services */
+        .services {
+            background: white;
+            padding: 4rem 2rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border-top: 4px solid #059669;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: #ecfdf5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .service-icon i {
+            font-size: 1.8rem;
+            color: #059669;
+        }
+
+        .service-card h3 {
+            text-align: center;
+            color: #1f2937;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .service-card p {
+            text-align: center;
+            color: #6b7280;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: #059669;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #047857;
+        }
+
+        .btn-secondary {
+            background: #dc2626;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #b91c1c;
+        }
+
+        /* Donation Section */
+        .donation-section {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .donation-section i {
+            font-size: 4rem;
+            color: #dc2626;
+            margin-bottom: 1.5rem;
+        }
+
+        .donation-section h2 {
+            font-size: 2rem;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+
+        .donation-section p {
+            font-size: 1.1rem;
+            color: #4b5563;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .donation-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .donation-buttons .btn {
+            width: auto;
+            padding: 1rem 2rem;
+        }
+
+        /* Form Styles */
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .form-header i {
+            font-size: 4rem;
+            color: #059669;
+            margin-bottom: 1rem;
+        }
+
+        .form-header h2 {
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-header p {
+            color: #6b7280;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #1f2937;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #059669;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: auto;
+        }
+
+        .back-btn {
+            margin-bottom: 1.5rem;
+            background: none;
+            border: none;
+            color: #059669;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+        }
+
+        .back-btn:hover {
+            color: #047857;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1f2937;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer h3 {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-contact {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-contact div {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer p {
+            color: #9ca3af;
+            margin-top: 1rem;
+        }
+
+        /* Hidden class */
+        .hidden {
+            display: none !important;
+        }
+
+        /* Loading Spinner */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Alert Messages */
+        .alert {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .alert.show {
+            display: block;
+        }
+
+        .alert-success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #059669;
+        }
+
+        .alert-error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #dc2626;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            margin: 2rem 0;
+        }
+
+        .progress-bar {
+            height: 10px;
+            background: #e5e7eb;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #059669;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5rem;
+            color: #6b7280;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: white;
+            padding: 4rem 2rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            background: #f9fafb;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-left: 4px solid #059669;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #059669;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #6b7280;
+            font-size: 1.1rem;
+        }
+
+        /* Setup Instructions */
+        .setup-instructions {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .setup-step {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .setup-step:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .setup-step h3 {
+            color: #059669;
+            margin-bottom: 0.5rem;
+        }
+
+        .code-block {
+            background: #1f2937;
+            color: #f9fafb;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: monospace;
+            margin: 0.5rem 0;
+            overflow-x: auto;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero h2 {
+                font-size: 1.2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .donation-buttons {
+                flex-direction: column;
+            }
+
+            .donation-buttons .btn {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo" onclick="app.showPage('home')">
+            <div class="logo" onclick="showPage('home')">
                 <i class="fas fa-book-quran"></i>
                 <div class="logo-text">
                     <h1>কর্জে হাসানা</h1>
@@ -19,24 +596,564 @@
                 </div>
             </div>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="#" onclick="app.showPage('home')"><i class="fas fa-home"></i> হোম</a></li>
-                <li><a href="#" onclick="app.showPage('apply')">আবেদন করুন</a></li>
-                <li><a href="#" onclick="app.showPage('donate')">দান করুন</a></li>
-                <li><a href="#" onclick="app.showPage('volunteer')">স্বেচ্ছাসেবী</a></li>
-                <li><a href="#" onclick="app.showPage('stats')">পরিসংখ্যান</a></li>
-                <li><a href="#" onclick="app.showPage('setup')"><i class="fas fa-cog"></i> সেটআপ</a></li>
+                <li><a href="#" onclick="showPage('home')"><i class="fas fa-home"></i> হোম</a></li>
+                <li><a href="#" onclick="showPage('apply')">আবেদন করুন</a></li>
+                <li><a href="#" onclick="showPage('donate')">দান করুন</a></li>
+                <li><a href="#" onclick="showPage('volunteer')">স্বেচ্ছাসেবী</a></li>
+                <li><a href="#" onclick="showPage('stats')">পরিসংখ্যান</a></li>
+                <li><a href="#" onclick="showPage('setup')"><i class="fas fa-cog"></i> সেটআপ</a></li>
             </ul>
-            <div class="hamburger" onclick="app.toggleMenu()">
+            <div class="hamburger" onclick="toggleMenu()">
                 <i class="fas fa-bars"></i>
             </div>
         </div>
     </nav>
 
-    <!-- Pages will be loaded dynamically by app.js -->
-    <div id="pageContainer"></div>
+    <!-- Home Page -->
+    <div id="homePage">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>কর্জে হাসানা</h1>
+            <h2>যুব জামায়াত, বদলগাছী, নওগাঁ</h2>
+            <p>আসসালামু আলাইকুম, "কর্জে হাসানা" যুব জামায়াত বদলগাছীর উদ্যোগে পরিচালিত সম্পূর্ণ সুদমুক্ত ইসলামিক আর্থিক সহায়তা প্ল্যাটফর্ম। এটি বদলগাছী, নওগাঁ এলাকার মুসলিম ভাই-বোনদের ইসলামিক আর্থিক সহায়তা প্রদানের জন্য নিবেদিত।</p>
+        </section>
 
-    <script src="js/config.js"></script>
-    <script src="js/database.js"></script>
-    <script src="js/app.js"></script>
-</body>
-</html>
+        <!-- Quran Verses -->
+        <div class="container quran-section">
+            <h2 class="section-title">কুরআনে কর্জে হাসানা সম্পর্কে</h2>
+            
+            <div class="quran-verse">
+                <p>যদি তোমরা আল্লাহকে উত্তম ঋণ দাও, তিনি তা তোমাদের জন্য দ্বিগুণ করে দিবেন এবং তোমাদের ক্ষমা করে দিবেন। আল্লাহ গুণগ্রাহী, পরম ধৈর্যশীল</p>
+                <p class="quran-reference">(সূরা তাগাবুন ৬৪:১৭)</p>
+            </div>
+
+            <div class="quran-verse">
+                <p>আল্লাহকে ঋণ দাও উত্তম ঋণ। তোমরা যা কিছু কল্যাণ নিজেদের জন্য আগে পাঠাবে, তা আল্লাহর নিকট (সঞ্চিত) পাবে, তাই উত্তম এবং পুরস্কারের হিসেবে খুব বড়</p>
+                <p class="quran-reference">(সূরা মুযযাম্মিল ৭৩:২০)</p>
+            </div>
+
+            <div class="quran-verse">
+                <p>তোমরা যা ভালবাস তা হতে ব্যয় না করা পর্যন্ত তোমরা কখনই কল্যাণ লাভ করতে পারবেনা; এবং তোমরা যা কিছুই ব্যয় কর, আল্লাহ তা জ্ঞাত আছেন</p>
+                <p class="quran-reference">(সূরা আলে ইমরান ৩:৯২)</p>
+            </div>
+
+            <div class="quran-verse">
+                <p>কে আছে যে আল্লাহকে দিবে উত্তম ঋণ? তাহলে তিনি বহুগুণে একে বৃদ্ধি করবেন এবং তার জন্য রয়েছে মহা পুরস্কার।</p>
+                <p class="quran-reference">(সূরা হাদীদ ৫৭:১১)</p>
+            </div>
+        </div>
+
+        <!-- Services -->
+        <section class="services">
+            <div class="container">
+                <h2 class="section-title">কর্জে হাসানা ফান্ড থেকে যেসব ক্ষেত্রে সহযোগিতা করা হয়</h2>
+                <p style="text-align: center; color: #6b7280; margin-bottom: 2rem; font-size: 1.1rem;">সম্পূর্ণ সুদমুক্ত ঋণ - ইসলামিক শরীয়াহ অনুযায়ী</p>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>শিক্ষা সহায়তা</h3>
+                        <p>পরীক্ষার ফি, রেজিস্ট্রেশন ফি, বই-খাতা ইত্যাদি প্রদান করতে অসমর্থ শিক্ষার্থীদের জন্য কর্জে হাসানা (সুদমুক্ত ঋণ) প্রদান করি।</p>
+                        <button class="btn btn-primary" onclick="showPage('apply')">
+                            আবেদন করুন <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>নির্ভরশীল ফান্ড</h3>
+                        <p>যারা স্বাবলম্বী হতে চান বা ইতিমধ্যে এই করার জন্য পদক্ষেপ নিচ্ছেন তাদের আর্থিক সহায়তার প্রয়োজন হতে পারে। আমরা তাদের কর্জে হাসানা অফার করি।</p>
+                        <button class="btn btn-primary" onclick="showPage('apply')">
+                            আবেদন করুন <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h3>চিকিৎসা সহায়তা</h3>
+                        <p>কেউ যদি দুর্ঘটনায় স্বাস্থ্যহীন হয় অথবা জরুরী চিকিৎসা সহায়তা প্রয়োজন পড়ে, আমরা তাকে কর্জে হাসানা (সুদমুক্ত ঋণ) প্রদান করি।</p>
+                        <button class="btn btn-primary" onclick="showPage('apply')">
+                            আবেদন করুন <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Donation Section -->
+        <section class="donation-section">
+            <div class="container">
+                <i class="fas fa-heart"></i>
+                <h2>আমাদের সাথে যুক্ত হউন - একমাত্র আল্লাহর জন্য</h2>
+                <p>এখানে অনুদান, সাদাকা, সেবা, সুন্দর পরামর্শ দিয়ে সহযোগিতা করুন। আপনার প্রতিটি অবদান আল্লাহর কাছে সংরক্ষিত থাকবে।</p>
+                <div class="donation-buttons">
+                    <button class="btn btn-secondary" onclick="showPage('donate')">
+                        দান/সাদাকা করুন
+                    </button>
+                    <button class="btn btn-primary" onclick="showPage('volunteer')">
+                        স্বেচ্ছাসেবী হউন
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <h3>যোগাযোগ করুন</h3>
+                <div class="footer-contact">
+                    <div>
+                        <i class="fas fa-phone"></i>
+                        <span>+8801650138333</span>
+                    </div>
+                    <div>
+                        <i class="fas fa-envelope"></i>
+                        <span>jubajamayat.badalgachi@gmail.com</span>
+                    </div>
+                </div>
+                <p>All Rights Reserved by যুব জামায়াত, বদলগাছী, নওগাঁ</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Application Page -->
+    <div id="applyPage" class="hidden">
+        <div class="container" style="min-height: 100vh; padding-top: 3rem; padding-bottom: 3rem;">
+            <button class="back-btn" onclick="showPage('home')">
+                <i class="fas fa-arrow-left"></i> হোম পেজে ফিরে যান
+            </button>
+            
+            <div class="form-container">
+                <div class="form-header">
+                    <i class="fas fa-file-alt"></i>
+                    <h2>কর্জে হাসানা আবেদন ফরম</h2>
+                </div>
+
+                <div id="applyAlert" class="alert"></div>
+
+                <div class="form-group">
+                    <label>নাম *</label>
+                    <input type="text" id="applyName" required>
+                </div>
+
+                <div class="form-group">
+                    <label>মোবাইল নম্বর *</label>
+                    <input type="tel" id="applyPhone" required>
+                </div>
+
+                <div class="form-group">
+                    <label>ঠিকানা *</label>
+                    <textarea id="applyAddress" rows="3" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>সহায়তার ধরন *</label>
+                    <select id="applyType" required>
+                        <option value="">নির্বাচন করুন</option>
+                        <option value="শিক্ষা সহায়তা">শিক্ষা সহায়তা</option>
+                        <option value="নির্ভরশীল ফান্ড">নির্ভরশীল ফান্ড</option>
+                        <option value="চিকিৎসা সহায়তা">চিকিৎসা সহায়তা</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>প্রয়োজনীয় পরিমাণ (টাকা) *</label>
+                    <input type="number" id="applyAmount" required>
+                </div>
+
+                <div class="form-group">
+                    <label>বিস্তারিত বিবরণ *</label>
+                    <textarea id="applyDetails" rows="5" placeholder="কেন এই সহায়তার প্রয়োজন তা বিস্তারিত লিখুন" required></textarea>
+                </div>
+
+                <button class="btn btn-primary" onclick="submitApplication()" id="applyBtn">
+                    <i class="fas fa-paper-plane"></i> আবেদন জমা দিন
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Donation Page -->
+    <div id="donatePage" class="hidden">
+        <div class="container" style="min-height: 100vh; padding-top: 3rem; padding-bottom: 3rem;">
+            <button class="back-btn" onclick="showPage('home')">
+                <i class="fas fa-arrow-left"></i> হোম পেজে ফিরে যান
+            </button>
+            
+            <div class="form-container">
+                <div class="form-header">
+                    <i class="fas fa-donate"></i>
+                    <h2>দান/সাদাকা ফরম</h2>
+                    <p>আপনার দান আল্লাহর কাছে কবুল হোক</p>
+                </div>
+
+                <div id="donateAlert" class="alert"></div>
+
+                <div class="form-group">
+                    <label>নাম</label>
+                    <input type="text" id="donateName">
+                </div>
+
+                <div class="form-group">
+                    <label>মোবাইল নম্বর</label>
+                    <input type="tel" id="donatePhone">
+                </div>
+
+                <div class="form-group">
+                    <label>দানের ধরন *</label>
+                    <select id="donateType" required>
+                        <option value="">নির্বাচন করুন</option>
+                        <option value="সাদাকা">সাদাকা</option>
+                        <option value="জাকাত">জাকাত</option>
+                        <option value="ফিতরা">ফিতরা</option>
+                        <option value="কোরবানির চামড়া">কোরবানির চামড়া</option>
+                        <option value="অন্যান্য">অন্যান্য</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>দানের পরিমাণ (টাকা) *</label>
+                    <input type="number" id="donateAmount" required>
+                </div>
+
+                <div class="form-group">
+                    <label>বিস্তারিত (যদি থাকে)</label>
+                    <textarea id="donateDetails" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>দান করার পদ্ধতি *</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="radio" id="method_bkash" name="donateMethod" value="বিকাশ">
+                            <label for="method_bkash">বিকাশ</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="radio" id="method_nagad" name="donateMethod" value="নগদ">
+                            <label for="method_nagad">নগদ</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="radio" id="method_bank" name="donateMethod" value="ব্যাংক">
+                            <label for="method_bank">ব্যাংক</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="radio" id="method_cash" name="donateMethod" value="নগদ">
+                            <label for="method_cash">সরাসরি নগদ</label>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-secondary" onclick="submitDonation()" id="donateBtn">
+                    <i class="fas fa-hand-holding-heart"></i> দান জমা দিন
+                </button>
+
+                <div style="margin-top: 2rem; padding: 1rem; background: #f3f4f6; border-radius: 8px;">
+                    <h3 style="color: #059669; margin-bottom: 0.5rem;">দান করার মাধ্যম:</h3>
+                    <p><strong>বিকাশ:</strong> 01650138333 (Personal)</p>
+                    <p><strong>নগদ:</strong> 01650138333</p>
+                    <p><strong>ব্যাংক:</strong> ইসলামী ব্যাংক বাংলাদেশ লিমিটেড, বদলগাছী শাখা</p>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; color: #6b7280;">দান করার পর আমাদের সাথে যোগাযোগ করুন</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Volunteer Page -->
+    <div id="volunteerPage" class="hidden">
+        <div class="container" style="min-height: 100vh; padding-top: 3rem; padding-bottom: 3rem;">
+            <button class="back-btn" onclick="showPage('home')">
+                <i class="fas fa-arrow-left"></i> হোম পেজে ফিরে যান
+            </button>
+            
+            <div class="form-container">
+                <div class="form-header">
+                    <i class="fas fa-hands-helping"></i>
+                    <h2>স্বেচ্ছাসেবক ফরম</h2>
+                    <p>আপনার সময় ও শ্রম দিয়ে আমাদের সহযোগিতা করুন</p>
+                </div>
+
+                <div id="volunteerAlert" class="alert"></div>
+
+                <div class="form-group">
+                    <label>নাম *</label>
+                    <input type="text" id="volunteerName" required>
+                </div>
+
+                <div class="form-group">
+                    <label>মোবাইল নম্বর *</label>
+                    <input type="tel" id="volunteerPhone" required>
+                </div>
+
+                <div class="form-group">
+                    <label>ঠিকানা *</label>
+                    <textarea id="volunteerAddress" rows="3" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>পেশা *</label>
+                    <input type="text" id="volunteerOccupation" required>
+                </div>
+
+                <div class="form-group">
+                    <label>আপনি কিভাবে সাহায্য করতে পারেন *</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="help_fund" value="ফান্ড সংগ্রহ">
+                            <label for="help_fund">ফান্ড সংগ্রহ</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="help_awareness" value="সচেতনতা">
+                            <label for="help_awareness">সচেতনতা তৈরি</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="help_tech" value="প্রযুক্তিগত সহায়তা">
+                            <label for="help_tech">প্রযুক্তিগত সহায়তা</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="help_event" value="ইভেন্ট পরিচালনা">
+                            <label for="help_event">ইভেন্ট পরিচালনা</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="help_other" value="অন্যান্য">
+                            <label for="help_other">অন্যান্য</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>সাপ্তাহিক কত ঘন্টা সময় দিতে পারবেন?</label>
+                    <select id="volunteerHours">
+                        <option value="১-৫ ঘন্টা">১-৫ ঘন্টা</option>
+                        <option value="৫-১০ ঘন্টা">৫-১০ ঘন্টা</option>
+                        <option value="১০-১৫ ঘন্টা">১০-১৫ ঘন্টা</option>
+                        <option value="১৫+ ঘন্টা">১৫+ ঘন্টা</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>অতিরিক্ত তথ্য (যদি থাকে)</label>
+                    <textarea id="volunteerExtra" rows="3"></textarea>
+                </div>
+
+                <button class="btn btn-primary" onclick="submitVolunteer()" id="volunteerBtn">
+                    <i class="fas fa-user-plus"></i> স্বেচ্ছাসেবক হিসাবে নিবন্ধন করুন
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Statistics Page -->
+    <div id="statsPage" class="hidden">
+        <div class="container" style="min-height: 100vh; padding-top: 3rem; padding-bottom: 3rem;">
+            <button class="back-btn" onclick="showPage('home')">
+                <i class="fas fa-arrow-left"></i> হোম পেজে ফিরে যান
+            </button>
+            
+            <div class="form-container">
+                <div class="form-header">
+                    <i class="fas fa-chart-bar"></i>
+                    <h2>কর্জে হাসানা পরিসংখ্যান</h2>
+                    <p>আমাদের কার্যক্রমের সাম্প্রতিক অগ্রগতি</p>
+                </div>
+
+                <div class="stats-section">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number" id="totalApplications">0</div>
+                            <div class="stat-label">মোট আবেদন</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="totalDonations">0</div>
+                            <div class="stat-label">মোট দান (টাকা)</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="totalVolunteers">0</div>
+                            <div class="stat-label">স্বেচ্ছাসেবক</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="successRate">0%</div>
+                            <div class="stat-label">সফলতার হার</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="progress-container">
+                    <h3 style="text-align: center; margin-bottom: 1rem;">বছরের লক্ষ্যমাত্রা</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="goalProgress"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span>বর্তমান: <span id="currentAmount">0</span> টাকা</span>
+                        <span>লক্ষ্য: ৫,০০,০০০ টাকা</span>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2rem; text-align: center;">
+                    <button class="btn btn-primary" onclick="refreshStats()">
+                        <i class="fas fa-sync-alt"></i> পরিসংখ্যান আপডেট করুন
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Setup Instructions Page -->
+    <div id="setupPage" class="hidden">
+        <div class="container" style="min-height: 100vh; padding-top: 3rem; padding-bottom: 3rem;">
+            <button class="back-btn" onclick="showPage('home')">
+                <i class="fas fa-arrow-left"></i> হোম পেজে ফিরে যান
+            </button>
+            
+            <div class="form-container">
+                <div class="form-header">
+                    <i class="fas fa-cogs"></i>
+                    <h2>Google Sheets সেটআপ নির্দেশিকা</h2>
+                    <p>এই ওয়েবসাইটটি Google Sheets-কে ডাটাবেজ হিসেবে ব্যবহার করে</p>
+                </div>
+
+                <div class="setup-instructions">
+                    <div class="setup-step">
+                        <h3>ধাপ ১: Google Sheets তৈরি করুন</h3>
+                        <p>একটি নতুন Google Sheets তৈরি করুন এবং নিচের Sheet গুলো তৈরি করুন:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li><strong>Applications</strong> - আবেদন ফর্ম ডাটা সংরক্ষণের জন্য</li>
+                            <li><strong>Donations</strong> - দান সংক্রান্ত ডাটা সংরক্ষণের জন্য</li>
+                            <li><strong>Volunteers</strong> - স্বেচ্ছাসেবক ডাটা সংরক্ষণের জন্য</li>
+                        </ul>
+                    </div>
+
+                    <div class="setup-step">
+                        <h3>ধাপ ২: Apps Script তৈরি করুন</h3>
+                        <p>Google Sheets-এ Tools &gt; Script Editor এ ক্লিক করুন এবং নিচের কোডটি পেস্ট করুন:</p>
+                        <div class="code-block">
+// Google Apps Script Code for Korje Hasana
+function doPost(e) {
+  try {
+    const data = JSON.parse(e.postData.contents);
+    const action = data.action;
+    
+    const spreadsheet = SpreadsheetApp.openById('YOUR_SPREADSHEET_ID');
+    let sheet, result;
+    
+    switch(action) {
+      case 'submitApplication':
+        sheet = spreadsheet.getSheetByName('Applications');
+        result = addApplication(sheet, data);
+        break;
+      case 'submitDonation':
+        sheet = spreadsheet.getSheetByName('Donations');
+        result = addDonation(sheet, data);
+        break;
+      case 'submitVolunteer':
+        sheet = spreadsheet.getSheetByName('Volunteers');
+        result = addVolunteer(sheet, data);
+        break;
+      default:
+        result = {status: 'error', message: 'Invalid action'};
+    }
+    
+    return ContentService.createTextOutput(JSON.stringify(result))
+      .setMimetype(ContentService.MimeType.JSON);
+    
+  } catch (error) {
+    return ContentService.createTextOutput(JSON.stringify({status: 'error', message: error.toString()}))
+      .setMimetype(ContentService.MimeType.JSON);
+  }
+}
+
+function doGet(e) {
+  const action = e.parameter.action;
+  
+  if (action === 'getStats') {
+    const stats = getStatistics();
+    return ContentService.createTextOutput(JSON.stringify({status: 'success', data: stats}))
+      .setMimetype(ContentService.MimeType.JSON);
+  }
+  
+  return ContentService.createTextOutput(JSON.stringify({status: 'error', message: 'Invalid action'}))
+    .setMimetype(ContentService.MimeType.JSON);
+}
+
+function addApplication(sheet, data) {
+  const row = [data.timestamp, data.name, data.phone, data.address, data.type, data.amount, data.details, 'Pending'];
+  sheet.appendRow(row);
+  return {status: 'success', message: 'Application submitted successfully'};
+}
+
+function addDonation(sheet, data) {
+  const row = [data.timestamp, data.name || 'Anonymous', data.phone || 'N/A', data.type, data.amount, data.method, data.details || 'N/A'];
+  sheet.appendRow(row);
+  return {status: 'success', message: 'Donation recorded successfully'};
+}
+
+function addVolunteer(sheet, data) {
+  const row = [data.timestamp, data.name, data.phone, data.address, data.occupation, data.helpTypes, data.hours, data.extra || 'N/A', 'Pending'];
+  sheet.appendRow(row);
+  return {status: 'success', message: 'Volunteer application submitted successfully'};
+}
+
+function getStatistics() {
+  const spreadsheet = SpreadsheetApp.openById('YOUR_SPREADSHEET_ID');
+  const applicationsSheet = spreadsheet.getSheetByName('Applications');
+  const donationsSheet = spreadsheet.getSheetByName('Donations');
+  const volunteersSheet = spreadsheet.getSheetByName('Volunteers');
+  
+  const totalApplications = applicationsSheet ? applicationsSheet.getLastRow() - 1 : 0;
+  const totalVolunteers = volunteersSheet ? volunteersSheet.getLastRow() - 1 : 0;
+  
+  let totalDonations = 0;
+  if (donationsSheet) {
+    const donationData = donationsSheet.getRange(2, 5, donationsSheet.getLastRow() - 1, 1).getValues();
+    donationData.forEach(row => {
+      totalDonations += parseFloat(row[0]) || 0;
+    });
+  }
+  
+  const successRate = applicationsSheet ? Math.round((totalApplications / (totalApplications + 10)) * 100) : 0;
+  
+  return {
+    totalApplications: totalApplications,
+    totalDonations: totalDonations,
+    totalVolunteers: totalVolunteers,
+    successRate: successRate + '%'
+  };
+}
+                        </div>
+                    </div>
+
+                    <div class="setup-step">
+                        <h3>ধাপ ৩: Script URL পান</h3>
+                        <p>Script Editor-এ Deploy &gt; New deployment এ ক্লিক করুন, Type হিসেবে "Web App" নির্বাচন করুন, এবং Execute as "Me", Who has access হিসেবে "Anyone" সেট করুন। তারপর Deploy বাটনে ক্লিক করুন এবং Script URL কপি করুন।</p>
+                    </div>
+
+                    <div class="setup-step">
+                        <h3>ধাপ ৪: Script URL সেট করুন</h3>
+                        <p>নিচের ফর্মে আপনার Script URL দিন এবং সেভ করুন:</p>
+                        <div class="form-group">
+                            <label>আপনার Google Apps Script URL</label>
+                            <input type="text" id="scriptUrl" placeholder="https://script.google.com/macros/s/.../exec">
+                        </div>
+                        <button class="btn btn-primary" onclick="saveScriptUrl()">
+                            <i class="fas fa-save"></i> URL সেভ করুন
+                        </button>
+                    </div>
+
+                    <div class="setup-step">
+                        <h3>পরীক্ষা করুন</h3>
+                        <p>সবকিছু সেটআপ হয়ে গেলে, আপনি এখন আবেদন ফর্ম, দান ফর্ম এবং স্বেচ্ছাসেবক ফর্ম ব্যবহার করতে পারবেন। ডাটা সরাসরি আপনার Google Sheets-এ সংরক্ষণ হবে।</p>
+                        <button class="btn btn-secondary" onclick="testConnection()" style="margin-top: 1rem;">
+                            <i class="fas fa-plug"></i> সংযোগ পরীক্ষা করুন
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
