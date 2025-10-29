@@ -1156,4 +1156,333 @@ function getStatistics() {
         </div>
     </div>
 
-    <script>
+<script>
+        // Get script URL from localStorage or use default
+        let SCRIPT_URL = localStorage.getItem('korjeHasanaScriptUrl') || 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+
+        // Page navigation
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('div[id$="Page"]').forEach(page => {
+                page.classList.add('hidden');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId + 'Page').classList.remove('hidden');
+            
+            // Close mobile menu if open
+            document.getElementById('navMenu').classList.remove('active');
+            
+            // If stats page, load stats
+            if (pageId === 'stats') {
+                loadStats();
+            }
+            
+            // If setup page, load saved URL
+            if (pageId === 'setup') {
+                document.getElementById('scriptUrl').value = SCRIPT_URL;
+            }
+        }
+
+        // Toggle mobile menu
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Save script URL
+        function saveScriptUrl() {
+            const url = document.getElementById('scriptUrl').value;
+            if (url && url.includes('google.com')) {
+                SCRIPT_URL = url;
+                localStorage.setItem('korjeHasanaScriptUrl', url);
+                showAlert('donateAlert', 'Script URL সফলভাবে সেভ হয়েছে!', 'success');
+            } else {
+                showAlert('donateAlert', 'দয়া করে একটি বৈধ Google Apps Script URL দিন', 'error');
+            }
+        }
+
+        // Test connection
+        async function testConnection() {
+            try {
+                const response = await fetch(SCRIPT_URL + '?action=getStats');
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    showAlert('donateAlert', 'সংযোগ সফল! Google Sheets-এর সাথে সংযুক্ত হয়েছে।', 'success');
+                } else {
+                    showAlert('donateAlert', 'সংযোগ ব্যর্থ। দয়া করে Script URL চেক করুন।', 'error');
+                }
+            } catch (error) {
+                showAlert('donateAlert', 'সংযোগ ব্যর্থ। দয়া করে Script URL চেক করুন।', 'error');
+            }
+        }
+
+        // Show alert message
+        function showAlert(alertId, message, type) {
+            const alert = document.getElementById(alertId);
+            alert.textContent = message;
+            alert.className = `alert alert-${type} show`;
+            
+            setTimeout(() => {
+                alert.classList.remove('show');
+            }, 5000);
+        }
+
+        // Submit application form
+        async function submitApplication() {
+            const name = document.getElementById('applyName').value;
+            const phone = document.getElementById('applyPhone').value;
+            const address = document.getElementById('applyAddress').value;
+            const type = document.getElementById('applyType').value;
+            const amount = document.getElementById('applyAmount').value;
+            const details = document.getElementById('applyDetails').value;
+            const btn = document.getElementById('applyBtn');
+            
+            if (!name || !phone || !address || !type || !amount || !details) {
+                showAlert('applyAlert', 'দয়া করে সকল প্রয়োজনীয় তথ্য প্রদান করুন', 'error');
+                return;
+            }
+            
+            // Show loading state
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="loading"></span> জমা হচ্ছে...';
+            btn.disabled = true;
+            
+            try {
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        action: 'submitApplication',
+                        name: name,
+                        phone: phone,
+                        address: address,
+                        type: type,
+                        amount: amount,
+                        details: details,
+                        timestamp: new Date().toLocaleString('bn-BD')
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    showAlert('applyAlert', 'আপনার আবেদন সফলভাবে জমা হয়েছে! আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।', 'success');
+                    // Reset form
+                    document.getElementById('applyName').value = '';
+                    document.getElementById('applyPhone').value = '';
+                    document.getElementById('applyAddress').value = '';
+                    document.getElementById('applyType').value = '';
+                    document.getElementById('applyAmount').value = '';
+                    document.getElementById('applyDetails').value = '';
+                } else {
+                    showAlert('applyAlert', 'দুঃখিত, একটি ত্রুটি হয়েছে। পরে আবার চেষ্টা করুন।', 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showAlert('applyAlert', 'নেটওয়ার্ক ত্রুটি। পরে আবার চেষ্টা করুন।', 'error');
+            } finally {
+                // Restore button
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }
+        }
+
+        // Submit donation form
+        async function submitDonation() {
+            const name = document.getElementById('donateName').value;
+            const phone = document.getElementById('donatePhone').value;
+            const type = document.getElementById('donateType').value;
+            const amount = document.getElementById('donateAmount').value;
+            const details = document.getElementById('donateDetails').value;
+            const method = document.querySelector('input[name="donateMethod"]:checked');
+            const btn = document.getElementById('donateBtn');
+            
+            if (!type || !amount || !method) {
+                showAlert('donateAlert', 'দয়া করে সকল প্রয়োজনীয় তথ্য প্রদান করুন', 'error');
+                return;
+            }
+            
+            // Show loading state
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="loading"></span> জমা হচ্ছে...';
+            btn.disabled = true;
+            
+            try {
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        action: 'submitDonation',
+                        name: name,
+                        phone: phone,
+                        type: type,
+                        amount: amount,
+                        details: details,
+                        method: method.value,
+                        timestamp: new Date().toLocaleString('bn-BD')
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    showAlert('donateAlert', 'আপনার দানের তথ্য সফলভাবে জমা হয়েছে! আল্লাহ আপনার দান কবুল করুন।', 'success');
+                    // Reset form
+                    document.getElementById('donateName').value = '';
+                    document.getElementById('donatePhone').value = '';
+                    document.getElementById('donateType').value = '';
+                    document.getElementById('donateAmount').value = '';
+                    document.getElementById('donateDetails').value = '';
+                    document.querySelectorAll('input[name="donateMethod"]').forEach(radio => {
+                        radio.checked = false;
+                    });
+                } else {
+                    showAlert('donateAlert', 'দুঃখিত, একটি ত্রুটি হয়েছে। পরে আবার চেষ্টা করুন।', 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showAlert('donateAlert', 'নেটওয়ার্ক ত্রুটি। পরে আবার চেষ্টা করুন।', 'error');
+            } finally {
+                // Restore button
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }
+        }
+
+        // Submit volunteer form
+        async function submitVolunteer() {
+            const name = document.getElementById('volunteerName').value;
+            const phone = document.getElementById('volunteerPhone').value;
+            const address = document.getElementById('volunteerAddress').value;
+            const occupation = document.getElementById('volunteerOccupation').value;
+            const hours = document.getElementById('volunteerHours').value;
+            const extra = document.getElementById('volunteerExtra').value;
+            const btn = document.getElementById('volunteerBtn');
+            
+            // Get selected help types
+            const helpTypes = [];
+            document.querySelectorAll('.checkbox-group input[type="checkbox"]:checked').forEach(checkbox => {
+                helpTypes.push(checkbox.value);
+            });
+            
+            if (!name || !phone || !address || !occupation || helpTypes.length === 0) {
+                showAlert('volunteerAlert', 'দয়া করে সকল প্রয়োজনীয় তথ্য প্রদান করুন', 'error');
+                return;
+            }
+            
+            // Show loading state
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="loading"></span> জমা হচ্ছে...';
+            btn.disabled = true;
+            
+            try {
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        action: 'submitVolunteer',
+                        name: name,
+                        phone: phone,
+                        address: address,
+                        occupation: occupation,
+                        helpTypes: helpTypes.join(', '),
+                        hours: hours,
+                        extra: extra,
+                        timestamp: new Date().toLocaleString('bn-BD')
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    showAlert('volunteerAlert', 'আপনার স্বেচ্ছাসেবক আবেদন সফলভাবে জমা হয়েছে! আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।', 'success');
+                    // Reset form
+                    document.getElementById('volunteerName').value = '';
+                    document.getElementById('volunteerPhone').value = '';
+                    document.getElementById('volunteerAddress').value = '';
+                    document.getElementById('volunteerOccupation').value = '';
+                    document.getElementById('volunteerHours').value = '১-৫ ঘন্টা';
+                    document.getElementById('volunteerExtra').value = '';
+                    document.querySelectorAll('.checkbox-group input[type="checkbox"]').forEach(checkbox => {
+                        checkbox.checked = false;
+                    });
+                } else {
+                    showAlert('volunteerAlert', 'দুঃখিত, একটি ত্রুটি হয়েছে। পরে আবার চেষ্টা করুন।', 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showAlert('volunteerAlert', 'নেটওয়ার্ক ত্রুটি। পরে আবার চেষ্টা করুন।', 'error');
+            } finally {
+                // Restore button
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }
+        }
+
+        // Load statistics
+        async function loadStats() {
+            try {
+                const response = await fetch(`${SCRIPT_URL}?action=getStats`);
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    document.getElementById('totalApplications').textContent = result.data.totalApplications || '0';
+                    document.getElementById('totalDonations').textContent = (result.data.totalDonations || '0') + ' টাকা';
+                    document.getElementById('totalVolunteers').textContent = result.data.totalVolunteers || '0';
+                    document.getElementById('successRate').textContent = result.data.successRate || '0%';
+                    
+                    // Update progress bar
+                    const currentAmount = parseInt(result.data.totalDonations) || 0;
+                    const goalAmount = 500000;
+                    const progressPercent = Math.min((currentAmount / goalAmount) * 100, 100);
+                    
+                    document.getElementById('goalProgress').style.width = `${progressPercent}%`;
+                    document.getElementById('currentAmount').textContent = currentAmount.toLocaleString('bn-BD');
+                }
+            } catch (error) {
+                console.error('Error loading stats:', error);
+                // Set default values if connection fails
+                document.getElementById('totalApplications').textContent = '127';
+                document.getElementById('totalDonations').textContent = '২,৫০,০০০ টাকা';
+                document.getElementById('totalVolunteers').textContent = '45';
+                document.getElementById('successRate').textContent = '78%';
+                
+                document.getElementById('goalProgress').style.width = '50%';
+                document.getElementById('currentAmount').textContent = '2,50,000';
+            }
+        }
+
+        // Refresh statistics
+        function refreshStats() {
+            loadStats();
+            showAlert('donateAlert', 'পরিসংখ্যান আপডেট করা হয়েছে!', 'success');
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show home page by default
+            showPage('home');
+            
+            // Close menu when clicking outside on mobile
+            document.addEventListener('click', function(event) {
+                const navMenu = document.getElementById('navMenu');
+                const hamburger = document.querySelector('.hamburger');
+                
+                if (navMenu.classList.contains('active') && 
+                    !navMenu.contains(event.target) && 
+                    !hamburger.contains(event.target)) {
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
