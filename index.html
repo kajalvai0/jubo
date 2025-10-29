@@ -855,8 +855,8 @@
 
                 <div style="margin-top: 2rem; padding: 1rem; background: #f3f4f6; border-radius: 8px;">
                     <h3 style="color: #059669; margin-bottom: 0.5rem;">দান করার মাধ্যম:</h3>
-                    <p><strong>বিকাশ:</strong> 01650138333 (Personal)</p>
-                    <p><strong>নগদ:</strong> 01650138333</p>
+                    <p><strong>বিকাশ:</strong> 01795635872 (Personal)</p>
+                    <p><strong>নগদ:</strong> 01795635872</p>
                     <p><strong>ব্যাংক:</strong> ইসলামী ব্যাংক বাংলাদেশ লিমিটেড, বদলগাছী শাখা</p>
                     <p style="margin-top: 1rem; font-size: 0.9rem; color: #6b7280;">দান করার পর আমাদের সাথে যোগাযোগ করুন</p>
                 </div>
@@ -948,130 +948,7 @@
         </div>
     </div>
 
-                    
-// Google Apps Script Code for Korje Hasana
-function doPost(e) {
-  try {
-    const data = JSON.parse(e.postData.contents);
-    const action = data.action;
-    
-    const spreadsheet = SpreadsheetApp.openById('YOUR_SPREADSHEET_ID');
-    let sheet, result;
-    
-    switch(action) {
-      case 'submitApplication':
-        sheet = spreadsheet.getSheetByName('Applications');
-        result = addApplication(sheet, data);
-        break;
-      case 'submitDonation':
-        sheet = spreadsheet.getSheetByName('Donations');
-        result = addDonation(sheet, data);
-        break;
-      case 'submitVolunteer':
-        sheet = spreadsheet.getSheetByName('Volunteers');
-        result = addVolunteer(sheet, data);
-        break;
-      default:
-        result = {status: 'error', message: 'Invalid action'};
-    }
-    
-    return ContentService.createTextOutput(JSON.stringify(result))
-      .setMimetype(ContentService.MimeType.JSON);
-    
-  } catch (error) {
-    return ContentService.createTextOutput(JSON.stringify({status: 'error', message: error.toString()}))
-      .setMimetype(ContentService.MimeType.JSON);
-  }
-}
 
-function doGet(e) {
-  const action = e.parameter.action;
-  
-  if (action === 'getStats') {
-    const stats = getStatistics();
-    return ContentService.createTextOutput(JSON.stringify({status: 'success', data: stats}))
-      .setMimetype(ContentService.MimeType.JSON);
-  }
-  
-  return ContentService.createTextOutput(JSON.stringify({status: 'error', message: 'Invalid action'}))
-    .setMimetype(ContentService.MimeType.JSON);
-}
-
-function addApplication(sheet, data) {
-  const row = [data.timestamp, data.name, data.phone, data.address, data.type, data.amount, data.details, 'Pending'];
-  sheet.appendRow(row);
-  return {status: 'success', message: 'Application submitted successfully'};
-}
-
-function addDonation(sheet, data) {
-  const row = [data.timestamp, data.name || 'Anonymous', data.phone || 'N/A', data.type, data.amount, data.method, data.details || 'N/A'];
-  sheet.appendRow(row);
-  return {status: 'success', message: 'Donation recorded successfully'};
-}
-
-function addVolunteer(sheet, data) {
-  const row = [data.timestamp, data.name, data.phone, data.address, data.occupation, data.helpTypes, data.hours, data.extra || 'N/A', 'Pending'];
-  sheet.appendRow(row);
-  return {status: 'success', message: 'Volunteer application submitted successfully'};
-}
-
-function getStatistics() {
-  const spreadsheet = SpreadsheetApp.openById('YOUR_SPREADSHEET_ID');
-  const applicationsSheet = spreadsheet.getSheetByName('Applications');
-  const donationsSheet = spreadsheet.getSheetByName('Donations');
-  const volunteersSheet = spreadsheet.getSheetByName('Volunteers');
-  
-  const totalApplications = applicationsSheet ? applicationsSheet.getLastRow() - 1 : 0;
-  const totalVolunteers = volunteersSheet ? volunteersSheet.getLastRow() - 1 : 0;
-  
-  let totalDonations = 0;
-  if (donationsSheet) {
-    const donationData = donationsSheet.getRange(2, 5, donationsSheet.getLastRow() - 1, 1).getValues();
-    donationData.forEach(row => {
-      totalDonations += parseFloat(row[0]) || 0;
-    });
-  }
-  
-  const successRate = applicationsSheet ? Math.round((totalApplications / (totalApplications + 10)) * 100) : 0;
-  
-  return {
-    totalApplications: totalApplications,
-    totalDonations: totalDonations,
-    totalVolunteers: totalVolunteers,
-    successRate: successRate + '%'
-  };
-}
-                        </div>
-                    </div>
-
-                    <div class="setup-step">
-                        <h3>ধাপ ৩: Script URL পান</h3>
-                        <p>Script Editor-এ Deploy &gt; New deployment এ ক্লিক করুন, Type হিসেবে "Web App" নির্বাচন করুন, এবং Execute as "Me", Who has access হিসেবে "Anyone" সেট করুন। তারপর Deploy বাটনে ক্লিক করুন এবং Script URL কপি করুন।</p>
-                    </div>
-
-                    <div class="setup-step">
-                        <h3>ধাপ ৪: Script URL সেট করুন</h3>
-                        <p>নিচের ফর্মে আপনার Script URL দিন এবং সেভ করুন:</p>
-                        <div class="form-group">
-                            <label>আপনার Google Apps Script URL</label>
-                            <input type="text" id="scriptUrl" placeholder="https://script.google.com/macros/s/.../exec">
-                        </div>
-                        <button class="btn btn-primary" onclick="saveScriptUrl()">
-                            <i class="fas fa-save"></i> URL সেভ করুন
-                        </button>
-                    </div>
-
-                    <div class="setup-step">
-                        <h3>পরীক্ষা করুন</h3>
-                        <p>সবকিছু সেটআপ হয়ে গেলে, আপনি এখন আবেদন ফর্ম, দান ফর্ম এবং স্বেচ্ছাসেবক ফর্ম ব্যবহার করতে পারবেন। ডাটা সরাসরি আপনার Google Sheets-এ সংরক্ষণ হবে।</p>
-                        <button class="btn btn-secondary" onclick="testConnection()" style="margin-top: 1rem;">
-                            <i class="fas fa-plug"></i> সংযোগ পরীক্ষা করুন
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
 <script>
         // Get script URL from localStorage or use default
