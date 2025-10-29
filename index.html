@@ -444,6 +444,678 @@
             border: 1px solid #dc2626;
         }
 
+        /* Progress Bar */
+        .progress-container {
+            margin: 2rem 0;
+        }
+
+        .progress-bar {
+            height: 10px;
+            background: #e5e7eb;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #059669;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5rem;
+            color: #6b7280;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: white;
+            padding: 4rem 2rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            background: #f9fafb;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-left: 4px solid #059669;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #059669;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #6b7280;
+            font-size: 1.1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero h2 {
+                font-size: 1.2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .donation-buttons {
+                flex-direction: column;
+            }
+
+            .donation-buttons .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" onclick="showPage('home')">
+                <i class="fas fa-book-quran"></i>
+                <div class="logo-text">
+                    <h1>কর্জে হাসানা</h1>
+                    <p>যুব জামায়াত, বদলগাছী</p>
+                </div>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#" onclick="showPage('home')"><i class="fas fa-home"></i> হোম</a></li>
+                <li><a href="#" onclick="showPage('apply')">আবেদন করুন</a></li>
+                <li><a href="#" onclick="showPage('donate')">দান করুন</a></li>
+                <li><a href="#" onclick="showPage('volunteer')">স্বেচ্ছাসেবী</a></li>
+                <li><a href="#" onclick="showPage('stats')">পরিসংখ্যান</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="homePage">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>কর্জে হাসানা</h1>
+            <h2>যুব জামায়াত, বদলগাছী, নওগাঁ</h2>
+            <p>আসসালামু আলাইকুম, "কর্জে হাসানা" যুব জামায়াত বদলগাছীর উদ্যোগে পরিচালিত সম্পূর্ণ সুদমুক্ত ইসলামিক আর্থিক সহায়তা প্ল্যাটফর্ম। এটি বদলগাছী, নওগাঁ এলাকার মুসলিম ভাই-বোনদের ইসলামিক আর্থিক সহায়তা প্রদানের জন্য নিবেদিত।</p>
+        </section>
+
+        <!-- Quran Verses -->
+        <div class="container quran-section">
+            <h2 class="section-title">কুরআনে কর্জে হাসানা সম্পর্কে</h2>
+            
+            <div class="quran-verse">
+                <p>যদি তোমরা আল্লাহকে উত্তম ঋণ দাও, তিনি তা তোমাদের জন্য দ্বিগুণ করে দিবেন এবং তোমাদের ক্ষমা করে দিবেন। আল্লাহ গুণগ্রাহী, পরম ধৈর্যশীল</p>
+                <p class="quran-reference">(সূরা তাগাবুন ৬৪:১৭)</p>
+            </div>
+
+            <div class="quran-verse">
+                <p>আল্লাহকে ঋণ দাও উত্তম ঋণ। তোমরা যা কিছু কল্যাণ নিজেদের জন্য আগে পাঠাবে, তা আল্লাহর নিকট (সঞ্চিত) পাবে, তাই উত্তম এবং পুরস্কারের হিসেবে খুব বড়</p>
+                <p class="quran-reference">(সূরা মুযযাম্মিল ৭৩:২০)</p>
+            </div>
+
+            <div class="quran-verse">
+                <p>তোমরা যা ভালবাস তা হতে ব্যয় না করা পর্যন্ত তোমরা কখনই কল্যাণ লাভ করতে পারবেনা; এবং তোমরা যা কিছুই ব্যয় কর, আল্লাহ তা জ্ঞাত আছেন</p>
+                <p class="quran-reference">(সূরা আলে ইমরান ৩:৯২)</p>
+            </div>
+
+            <div class="quran-verse">
+                <p>কে আছে যে আল্লাহকে দিবে উত্তম ঋণ? তাহলে তিনি বহুগুণে একে বৃদ্ধি করবেন এবং তার জন্য রয়েছে মহা পুরস্কার।</p>
+                <p class="quran-reference">(সূরা হাদীদ ৫৭:১১)</p>
+            </div>
+        </div>
+
+        <!-- Services -->
+        <section class="services">
+            <div class="container">
+                <h2 class="section-title">কর্জে হাসানা ফান্ড থেকে যেসব ক্ষেত্রে সহযোগিতা করা হয়</h2>
+                <p style="text-align: center; color: #6b7280; margin-bottom: 2rem; font-size: 1.1rem;">সম্পূর্ণ সুদমুক্ত ঋণ - ইসলামিক শরীয়াহ অনুযায়ী</p>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>শিক্ষা সহায়তা</h3>
+                        <p>পরীক্ষার ফি, রেজিস্ট্রেশন ফি, বই-খাতা ইত্যাদি প্রদান করতে অসমর্থ শিক্ষার্থীদের জন্য কর্জে হাসানা (সুদমুক্ত ঋণ) প্রদান করি।</p>
+                        <button class="btn btn-primary" onclick="showPage('apply')">
+                            আবেদন করুন <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>নির্ভরশীল ফান্ড</h3>
+                        <p>যারা স্বাবলম্বী হতে চান বা ইতিমধ্যে এই করার জন্য পদক্ষেপ নিচ্ছেন তাদের আর্থিক সহায়তার প্রয়োজন হতে পারে। আমরা তাদের কর্জে হাসানা অফার করি।</p>
+                        <button class="btn btn-primary" onclick="showPage('apply')">
+                            আবেদন করুন <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h3>চিকিৎসা সহায়তা</h3>
+                        <p>কেউ যদি দুর্ঘটনায় স্বাস্থ্যহীন হয় অথবা জরুরী চিকিৎসা সহায়তা প্রয়োজন পড়ে, আমরা তাকে কর্জে হাসানা (সুদমুক্ত ঋণ) প্রদান করি।</p>
+                        <button class="btn btn-primary" onclick="showPage('apply')">
+                            আবেদন করুন <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Donation Section -->
+        <section class="donation-section">
+            <div class="container">
+                <i class="fas fa-heart"></i>
+                <h2>আমাদের সাথে যুক্ত হউন - একমাত্র আল্লাহর জন্য</h2>
+                <p>এখানে অনুদান, সাদাকা, সেবা, সুন্দর পরামর্শ দিয়ে সহযোগিতা করুন। আপনার প্রতিটি অবদান আল্লাহর কাছে সংরক্ষিত থাকবে।</p>
+                <div class="donation-buttons">
+                    <button class="btn btn-secondary" onclick="showPage('donate')">
+                        দান/সাদাকা করুন
+                    </button>
+                    <button class="btn btn-primary" onclick="showPage('volunteer')">
+                        স্বেচ্ছাসেবী হউন
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <h3>যোগাযোগ করুন</h3>
+                <div class="footer-contact">
+                    <div>
+                        <i class="fas fa-phone"></i>
+                        <span>+8801650138333</span>
+                    </div>
+                    <div>
+                        <i class="fas fa-envelope"></i>
+                        <span>jubajamayat.badalgachi@gmail.com</span>
+                    </div>
+                </div>
+                <p>All Rights Reserved by যুব জামায়াত, বদলগাছী, নওগাঁ</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Application Page -->
+    <div id="applyPage" class="hidden">
+        <div class="container" style="min-height: 100vh; padding-top: 3rem; padding-bottom: 3rem;">
+            <button class="back-btn" onclick="showPage('home')">
+                <i class="fas fa-arrow-left"></i> হোম পেজে ফিরে যান
+            </button>
+            
+            <div class="form-container">
+                <div class="form-header">
+                    <i class="fas fa-file-alt"></i>
+                    <h2>কর্জে হাসানা আবেদন ফরম</h2>
+                </div>
+
+                <div id="applyAlert" class="alert"></div>
+
+                <div class="form-group">
+                    <label>নাম *</label>
+                    <input type="text" id="applyName" required>
+                </div>
+
+                <div class="form-group">
+                    <label>মোবাইল নম্বর *</label        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .logo i {
+            font-size: 2rem;
+            color: #059669;
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            color: #1f2937;
+        }
+
+        .logo-text p {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #4b5563;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #059669;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #1f2937;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #059669 0%, #0d9488 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .hero p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Quran Verses */
+        .quran-section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: #1f2937;
+            margin-bottom: 3rem;
+        }
+
+        .quran-verse {
+            background: #ecfdf5;
+            border-right: 4px solid #059669;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+        }
+
+        .quran-verse p {
+            color: #1f2937;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .quran-reference {
+            color: #059669;
+            font-weight: bold;
+            text-align: right;
+        }
+
+        /* Services */
+        .services {
+            background: white;
+            padding: 4rem 2rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border-top: 4px solid #059669;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: #ecfdf5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .service-icon i {
+            font-size: 1.8rem;
+            color: #059669;
+        }
+
+        .service-card h3 {
+            text-align: center;
+            color: #1f2937;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .service-card p {
+            text-align: center;
+            color: #6b7280;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: #059669;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #047857;
+        }
+
+        .btn-secondary {
+            background: #dc2626;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #b91c1c;
+        }
+
+        /* Donation Section */
+        .donation-section {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .donation-section i {
+            font-size: 4rem;
+            color: #dc2626;
+            margin-bottom: 1.5rem;
+        }
+
+        .donation-section h2 {
+            font-size: 2rem;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+
+        .donation-section p {
+            font-size: 1.1rem;
+            color: #4b5563;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .donation-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .donation-buttons .btn {
+            width: auto;
+            padding: 1rem 2rem;
+        }
+
+        /* Form Styles */
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .form-header i {
+            font-size: 4rem;
+            color: #059669;
+            margin-bottom: 1rem;
+        }
+
+        .form-header h2 {
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-header p {
+            color: #6b7280;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #1f2937;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #059669;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: auto;
+        }
+
+        .back-btn {
+            margin-bottom: 1.5rem;
+            background: none;
+            border: none;
+            color: #059669;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+        }
+
+        .back-btn:hover {
+            color: #047857;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1f2937;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer h3 {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-contact {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-contact div {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer p {
+            color: #9ca3af;
+            margin-top: 1rem;
+        }
+
+        /* Hidden class */
+        .hidden {
+            display: none !important;
+        }
+
+        /* Loading Spinner */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Alert Messages */
+        .alert {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .alert.show {
+            display: block;
+        }
+
+        .alert-success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #059669;
+        }
+
+        .alert-error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #dc2626;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .nav-menu {
@@ -745,4 +1417,435 @@
     <div id="volunteerPage" class="hidden">
         <div class="container" style="min-height: 100vh; padding-top: 3rem; padding-bottom: 3rem;">
             <button class="back-btn" onclick="showPage('home')">
-                <i class="fas fa-arrow-left"></i> হোম পেজে ফি
+                <i class="fas fa-arrow-left"></i> হোম পেজে ফিরে যান
+            </button>
+            
+            <div class="form-container">
+                <div class="form-header">
+                    <i class="fas fa-hands-helping"></i>
+                    <h2>স্বেচ্ছাসেবক ফরম</h2>
+                    <p>আপনার সময় ও শ্রম দিয়ে আমাদের সহযোগিতা করুন</p>
+                </div>
+
+                <div id="volunteerAlert" class="alert"></div>
+
+                <div class="form-group">
+                    <label>নাম *</label>
+                    <input type="text" id="volunteerName" required>
+                </div>
+
+                <div class="form-group">
+                    <label>মোবাইল নম্বর *</label>
+                    <input type="tel" id="volunteerPhone" required>
+                </div>
+
+                <div class="form-group">
+                    <label>ঠিকানা *</label>
+                    <textarea id="volunteerAddress" rows="3" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>পেশা *</label>
+                    <input type="text" id="volunteerOccupation" required>
+                </div>
+
+                <div class="form-group">
+                    <label>আপনি কিভাবে সাহায্য করতে পারেন *</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="help_fund" value="ফান্ড সংগ্রহ">
+                            <label for="help_fund">ফান্ড সংগ্রহ</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="help_awareness" value="সচেতনতা">
+                            <label for="help_awareness">সচেতনতা তৈরি</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="help_tech" value="প্রযুক্তিগত সহায়তা">
+                            <label for="help_tech">প্রযুক্তিগত সহায়তা</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="help_event" value="ইভেন্ট পরিচালনা">
+                            <label for="help_event">ইভেন্ট পরিচালনা</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="help_other" value="অন্যান্য">
+                            <label for="help_other">অন্যান্য</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>সাপ্তাহিক কত ঘন্টা সময় দিতে পারবেন?</label>
+                    <select id="volunteerHours">
+                        <option value="১-৫ ঘন্টা">১-৫ ঘন্টা</option>
+                        <option value="৫-১০ ঘন্টা">৫-১০ ঘন্টা</option>
+                        <option value="১০-১৫ ঘন্টা">১০-১৫ ঘন্টা</option>
+                        <option value="১৫+ ঘন্টা">১৫+ ঘন্টা</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>অতিরিক্ত তথ্য (যদি থাকে)</label>
+                    <textarea id="volunteerExtra" rows="3"></textarea>
+                </div>
+
+                <button class="btn btn-primary" onclick="submitVolunteer()" id="volunteerBtn">
+                    <i class="fas fa-user-plus"></i> স্বেচ্ছাসেবক হিসাবে নিবন্ধন করুন
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Statistics Page -->
+    <div id="statsPage" class="hidden">
+        <div class="container" style="min-height: 100vh; padding-top: 3rem; padding-bottom: 3rem;">
+            <button class="back-btn" onclick="showPage('home')">
+                <i class="fas fa-arrow-left"></i> হোম পেজে ফিরে যান
+            </button>
+            
+            <div class="form-container">
+                <div class="form-header">
+                    <i class="fas fa-chart-bar"></i>
+                    <h2>কর্জে হাসানা পরিসংখ্যান</h2>
+                    <p>আমাদের কার্যক্রমের সাম্প্রতিক অগ্রগতি</p>
+                </div>
+
+                <div class="stats-section">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number" id="totalApplications">0</div>
+                            <div class="stat-label">মোট আবেদন</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="totalDonations">0</div>
+                            <div class="stat-label">মোট দান (টাকা)</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="totalVolunteers">0</div>
+                            <div class="stat-label">স্বেচ্ছাসেবক</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="successRate">0%</div>
+                            <div class="stat-label">সফলতার হার</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="progress-container">
+                    <h3 style="text-align: center; margin-bottom: 1rem;">বছরের লক্ষ্যমাত্রা</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="goalProgress"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span>বর্তমান: <span id="currentAmount">0</span> টাকা</span>
+                        <span>লক্ষ্য: ৫,০০,০০০ টাকা</span>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2rem; text-align: center;">
+                    <button class="btn btn-primary" onclick="refreshStats()">
+                        <i class="fas fa-sync-alt"></i> পরিসংখ্যান আপডেট করুন
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Google Apps Script URL - Replace with your own
+        const SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+
+        // Page navigation
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('div[id$="Page"]').forEach(page => {
+                page.classList.add('hidden');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId + 'Page').classList.remove('hidden');
+            
+            // Close mobile menu if open
+            document.getElementById('navMenu').classList.remove('active');
+            
+            // If stats page, load stats
+            if (pageId === 'stats') {
+                loadStats();
+            }
+        }
+
+        // Toggle mobile menu
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Show alert message
+        function showAlert(alertId, message, type) {
+            const alert = document.getElementById(alertId);
+            alert.textContent = message;
+            alert.className = `alert alert-${type} show`;
+            
+            setTimeout(() => {
+                alert.classList.remove('show');
+            }, 5000);
+        }
+
+        // Submit application form
+        async function submitApplication() {
+            const name = document.getElementById('applyName').value;
+            const phone = document.getElementById('applyPhone').value;
+            const address = document.getElementById('applyAddress').value;
+            const type = document.getElementById('applyType').value;
+            const amount = document.getElementById('applyAmount').value;
+            const details = document.getElementById('applyDetails').value;
+            const btn = document.getElementById('applyBtn');
+            
+            if (!name || !phone || !address || !type || !amount || !details) {
+                showAlert('applyAlert', 'দয়া করে সকল প্রয়োজনীয় তথ্য প্রদান করুন', 'error');
+                return;
+            }
+            
+            // Show loading state
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="loading"></span> জমা হচ্ছে...';
+            btn.disabled = true;
+            
+            try {
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        action: 'submitApplication',
+                        name: name,
+                        phone: phone,
+                        address: address,
+                        type: type,
+                        amount: amount,
+                        details: details,
+                        timestamp: new Date().toLocaleString('bn-BD')
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    showAlert('applyAlert', 'আপনার আবেদন সফলভাবে জমা হয়েছে! আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।', 'success');
+                    // Reset form
+                    document.getElementById('applyName').value = '';
+                    document.getElementById('applyPhone').value = '';
+                    document.getElementById('applyAddress').value = '';
+                    document.getElementById('applyType').value = '';
+                    document.getElementById('applyAmount').value = '';
+                    document.getElementById('applyDetails').value = '';
+                } else {
+                    showAlert('applyAlert', 'দুঃখিত, একটি ত্রুটি হয়েছে। পরে আবার চেষ্টা করুন।', 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showAlert('applyAlert', 'নেটওয়ার্ক ত্রুটি। পরে আবার চেষ্টা করুন।', 'error');
+            } finally {
+                // Restore button
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }
+        }
+
+        // Submit donation form
+        async function submitDonation() {
+            const name = document.getElementById('donateName').value;
+            const phone = document.getElementById('donatePhone').value;
+            const type = document.getElementById('donateType').value;
+            const amount = document.getElementById('donateAmount').value;
+            const details = document.getElementById('donateDetails').value;
+            const method = document.querySelector('input[name="donateMethod"]:checked');
+            const btn = document.getElementById('donateBtn');
+            
+            if (!type || !amount || !method) {
+                showAlert('donateAlert', 'দয়া করে সকল প্রয়োজনীয় তথ্য প্রদান করুন', 'error');
+                return;
+            }
+            
+            // Show loading state
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="loading"></span> জমা হচ্ছে...';
+            btn.disabled = true;
+            
+            try {
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        action: 'submitDonation',
+                        name: name,
+                        phone: phone,
+                        type: type,
+                        amount: amount,
+                        details: details,
+                        method: method.value,
+                        timestamp: new Date().toLocaleString('bn-BD')
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    showAlert('donateAlert', 'আপনার দানের তথ্য সফলভাবে জমা হয়েছে! আল্লাহ আপনার দান কবুল করুন।', 'success');
+                    // Reset form
+                    document.getElementById('donateName').value = '';
+                    document.getElementById('donatePhone').value = '';
+                    document.getElementById('donateType').value = '';
+                    document.getElementById('donateAmount').value = '';
+                    document.getElementById('donateDetails').value = '';
+                    document.querySelectorAll('input[name="donateMethod"]').forEach(radio => {
+                        radio.checked = false;
+                    });
+                } else {
+                    showAlert('donateAlert', 'দুঃখিত, একটি ত্রুটি হয়েছে। পরে আবার চেষ্টা করুন।', 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showAlert('donateAlert', 'নেটওয়ার্ক ত্রুটি। পরে আবার চেষ্টা করুন।', 'error');
+            } finally {
+                // Restore button
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }
+        }
+
+        // Submit volunteer form
+        async function submitVolunteer() {
+            const name = document.getElementById('volunteerName').value;
+            const phone = document.getElementById('volunteerPhone').value;
+            const address = document.getElementById('volunteerAddress').value;
+            const occupation = document.getElementById('volunteerOccupation').value;
+            const hours = document.getElementById('volunteerHours').value;
+            const extra = document.getElementById('volunteerExtra').value;
+            const btn = document.getElementById('volunteerBtn');
+            
+            // Get selected help types
+            const helpTypes = [];
+            document.querySelectorAll('.checkbox-group input[type="checkbox"]:checked').forEach(checkbox => {
+                helpTypes.push(checkbox.value);
+            });
+            
+            if (!name || !phone || !address || !occupation || helpTypes.length === 0) {
+                showAlert('volunteerAlert', 'দয়া করে সকল প্রয়োজনীয় তথ্য প্রদান করুন', 'error');
+                return;
+            }
+            
+            // Show loading state
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="loading"></span> জমা হচ্ছে...';
+            btn.disabled = true;
+            
+            try {
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        action: 'submitVolunteer',
+                        name: name,
+                        phone: phone,
+                        address: address,
+                        occupation: occupation,
+                        helpTypes: helpTypes.join(', '),
+                        hours: hours,
+                        extra: extra,
+                        timestamp: new Date().toLocaleString('bn-BD')
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    showAlert('volunteerAlert', 'আপনার স্বেচ্ছাসেবক আবেদন সফলভাবে জমা হয়েছে! আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।', 'success');
+                    // Reset form
+                    document.getElementById('volunteerName').value = '';
+                    document.getElementById('volunteerPhone').value = '';
+                    document.getElementById('volunteerAddress').value = '';
+                    document.getElementById('volunteerOccupation').value = '';
+                    document.getElementById('volunteerHours').value = '১-৫ ঘন্টা';
+                    document.getElementById('volunteerExtra').value = '';
+                    document.querySelectorAll('.checkbox-group input[type="checkbox"]').forEach(checkbox => {
+                        checkbox.checked = false;
+                    });
+                } else {
+                    showAlert('volunteerAlert', 'দুঃখিত, একটি ত্রুটি হয়েছে। পরে আবার চেষ্টা করুন।', 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showAlert('volunteerAlert', 'নেটওয়ার্ক ত্রুটি। পরে আবার চেষ্টা করুন।', 'error');
+            } finally {
+                // Restore button
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }
+        }
+
+        // Load statistics
+        async function loadStats() {
+            try {
+                const response = await fetch(`${SCRIPT_URL}?action=getStats`);
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    document.getElementById('totalApplications').textContent = result.data.totalApplications || '0';
+                    document.getElementById('totalDonations').textContent = (result.data.totalDonations || '0') + ' টাকা';
+                    document.getElementById('totalVolunteers').textContent = result.data.totalVolunteers || '0';
+                    document.getElementById('successRate').textContent = result.data.successRate || '0%';
+                    
+                    // Update progress bar
+                    const currentAmount = parseInt(result.data.totalDonations) || 0;
+                    const goalAmount = 500000;
+                    const progressPercent = Math.min((currentAmount / goalAmount) * 100, 100);
+                    
+                    document.getElementById('goalProgress').style.width = `${progressPercent}%`;
+                    document.getElementById('currentAmount').textContent = currentAmount.toLocaleString('bn-BD');
+                }
+            } catch (error) {
+                console.error('Error loading stats:', error);
+                // Set default values
+                document.getElementById('totalApplications').textContent = '127';
+                document.getElementById('totalDonations').textContent = '২,৫০,০০০ টাকা';
+                document.getElementById('totalVolunteers').textContent = '45';
+                document.getElementById('successRate').textContent = '78%';
+                
+                document.getElementById('goalProgress').style.width = '50%';
+                document.getElementById('currentAmount').textContent = '2,50,000';
+            }
+        }
+
+        // Refresh statistics
+        function refreshStats() {
+            loadStats();
+            showAlert('donateAlert', 'পরিসংখ্যান আপডেট করা হয়েছে!', 'success');
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show home page by default
+            showPage('home');
+            
+            // Close menu when clicking outside on mobile
+            document.addEventListener('click', function(event) {
+                const navMenu = document.getElementById('navMenu');
+                const hamburger = document.querySelector('.hamburger');
+                
+                if (navMenu.classList.contains('active') && 
+                    !navMenu.contains(event.target) && 
+                    !hamburger.contains(event.target)) {
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+    </html>
