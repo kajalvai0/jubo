@@ -10,9 +10,9 @@ class Database {
             this.db = new GoogleSheetsDB(CONFIG.GOOGLE_SHEETS.SCRIPT_URL);
         } else if (this.type === 'sheetdb') {
             this.db = new SheetDB({
-                applications: CONFIG.SHEETDB.APPLICATIONS_URL,
-                donations: CONFIG.SHEETDB.DONATIONS_URL,
-                volunteers: CONFIG.SHEETDB.VOLUNTEERS_URL
+                applications: CONFIG.https://sheetdb.io/api/v1/kcsid6691qn5p,
+                donations: CONFIG.https://sheetdb.io/api/v1/kcsid6691qn5p,
+                volunteers: CONFIG.https://sheetdb.io/api/v1/kcsid6691qn5p
             });
         }
     }
