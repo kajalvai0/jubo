@@ -8,9 +8,9 @@ const CONFIG = {
     
     // SheetDB Configuration (Alternative)
     SHEETDB: {
-        APPLICATIONS_URL: 'https://sheetdb.io/api/v1/YOUR_SHEETDB_ID_APPLICATIONS',
-        DONATIONS_URL: 'https://sheetdb.io/api/v1/YOUR_SHEETDB_ID_DONATIONS',
-        VOLUNTEERS_URL: 'https://sheetdb.io/api/v1/YOUR_SHEETDB_ID_VOLUNTEERS'
+        APPLICATIONS_URL: 'https://sheetdb.io/api/v1/kcsid6691qn5p',
+        DONATIONS_URL: 'https://sheetdb.io/api/v1/kcsid6691qn5p',
+        VOLUNTEERS_URL: 'https://sheetdb.io/api/v1/kcsid6691qn5p'
     },
     
     // App Configuration
