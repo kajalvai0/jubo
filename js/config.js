@@ -18,11 +18,11 @@ const CONFIG = {
         NAME: 'কর্জে হাসানা',
         VERSION: '1.0.0',
         CONTACT: {
-            PHONE: '+8801650138333',
+            PHONE: '+8801755383039',
             EMAIL: 'jubajamayat.badalgachi@gmail.com'
         }
     },
     
     // Database Type (google_sheets or sheetdb)
-    DATABASE_TYPE: 'google_sheets'
+    DATABASE_TYPE: 'sheetdb'
 };
