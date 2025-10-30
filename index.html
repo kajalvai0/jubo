@@ -3,1278 +3,882 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>কর্জে হাসানা - যুব জামায়াত বদলগাছী</title>
+    <title>ইসলামিক ফাইন্যান্স কোর্স - মোহাইমিন পাটোয়ারী</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --primary: #1a5f7a;
+            --secondary: #159895;
+            --accent: #57c5b6;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --success: #28a745;
+            --warning: #ffc107;
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-
-        body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
             line-height: 1.6;
-            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
         }
-
-        /* Navigation */
-        .navbar {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-        }
-
-        .logo i {
-            font-size: 2rem;
-            color: #059669;
-        }
-
-        .logo-text h1 {
-            font-size: 1.5rem;
-            color: #1f2937;
-        }
-
-        .logo-text p {
-            font-size: 0.8rem;
-            color: #6b7280;
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-menu a {
-            text-decoration: none;
-            color: #4b5563;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        .nav-menu a:hover {
-            color: #059669;
-        }
-
-        .hamburger {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: #1f2937;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #059669 0%, #0d9488 100%);
-            color: white;
-            padding: 5rem 2rem;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero h2 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            opacity: 0.9;
-        }
-
-        .hero p {
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 1.2rem;
-            line-height: 1.8;
-        }
-
-        /* Container */
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 4rem 2rem;
+            padding: 0 20px;
         }
-
-        /* Quran Verses */
-        .quran-section {
-            margin-bottom: 4rem;
-        }
-
-        .section-title {
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 0;
             text-align: center;
-            font-size: 2rem;
-            color: #1f2937;
-            margin-bottom: 3rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
-
-        .quran-verse {
-            background: #ecfdf5;
-            border-right: 4px solid #059669;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border-radius: 8px;
-        }
-
-        .quran-verse p {
-            color: #1f2937;
-            font-size: 1.1rem;
-            line-height: 1.8;
+        
+        header h1 {
+            font-size: 2.5rem;
             margin-bottom: 0.5rem;
         }
-
-        .quran-reference {
-            color: #059669;
-            font-weight: bold;
-            text-align: right;
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
         }
-
-        /* Services */
-        .services {
-            background: white;
-            padding: 4rem 2rem;
+        
+        .instructor {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            display: inline-block;
         }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
             gap: 2rem;
-            margin-top: 2rem;
+            margin: 2rem 0;
         }
-
-        .service-card {
+        
+        .category-nav {
+            flex: 1;
+            min-width: 280px;
             background: white;
-            border-radius: 12px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 1.5rem;
+            height: fit-content;
+        }
+        
+        .category-nav h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+        
+        .nav-list {
+            list-style: none;
+        }
+        
+        .nav-item {
+            margin-bottom: 0.8rem;
+        }
+        
+        .nav-btn {
+            display: block;
+            width: 100%;
+            padding: 12px 15px;
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            text-align: left;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--dark);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        .nav-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .content-display {
+            flex: 2;
+            min-width: 300px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             padding: 2rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            border-top: 4px solid #059669;
-            transition: transform 0.3s, box-shadow 0.3s;
+            min-height: 500px;
         }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        
+        .category-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
         }
-
-        .service-icon {
+        
+        .category-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .category-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .category-icon {
             width: 60px;
             height: 60px;
-            background: #ecfdf5;
+            background: var(--primary);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1.5rem;
+            margin-right: 1rem;
+            color: white;
+            font-size: 1.5rem;
         }
-
-        .service-icon i {
+        
+        .category-title {
             font-size: 1.8rem;
-            color: #059669;
+            color: var(--primary);
         }
-
-        .service-card h3 {
-            text-align: center;
-            color: #1f2937;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .service-card p {
-            text-align: center;
-            color: #6b7280;
-            margin-bottom: 1.5rem;
-        }
-
-        .btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            width: 100%;
-            padding: 1rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .btn-primary {
-            background: #059669;
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #047857;
-        }
-
-        .btn-secondary {
-            background: #dc2626;
-            color: white;
-        }
-
-        .btn-secondary:hover {
-            background: #b91c1c;
-        }
-
-        /* Donation Section */
-        .donation-section {
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            padding: 4rem 2rem;
-            text-align: center;
-        }
-
-        .donation-section i {
-            font-size: 4rem;
-            color: #dc2626;
-            margin-bottom: 1.5rem;
-        }
-
-        .donation-section h2 {
-            font-size: 2rem;
-            color: #1f2937;
-            margin-bottom: 1rem;
-        }
-
-        .donation-section p {
+        
+        .category-description {
             font-size: 1.1rem;
-            color: #4b5563;
-            margin-bottom: 2rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+            color: #555;
+            margin-bottom: 1.5rem;
         }
-
-        .donation-buttons {
+        
+        .benefits-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+        
+        .benefit-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
             display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
+            align-items: flex-start;
         }
-
-        .donation-buttons .btn {
-            width: auto;
-            padding: 1rem 2rem;
+        
+        .benefit-item:last-child {
+            border-bottom: none;
         }
-
-        /* Form Styles */
-        .form-container {
-            max-width: 600px;
-            margin: 0 auto;
+        
+        .benefit-icon {
+            color: var(--success);
+            margin-right: 10px;
+            font-size: 1.2rem;
+            margin-top: 2px;
+        }
+        
+        .registration-section {
             background: white;
-            padding: 3rem;
-            border-radius: 16px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 2rem;
+            margin: 2rem 0;
         }
-
-        .form-header {
-            text-align: center;
-            margin-bottom: 2rem;
+        
+        .section-title {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
         }
-
-        .form-header i {
-            font-size: 4rem;
-            color: #059669;
-            margin-bottom: 1rem;
-        }
-
-        .form-header h2 {
-            color: #1f2937;
-            margin-bottom: 0.5rem;
-        }
-
-        .form-header p {
-            color: #6b7280;
-        }
-
+        
         .form-group {
             margin-bottom: 1.5rem;
         }
-
-        .form-group label {
+        
+        .form-label {
             display: block;
             margin-bottom: 0.5rem;
-            color: #1f2937;
-            font-weight: 600;
+            font-weight: 500;
+            color: var(--dark);
         }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
+        
+        .form-control {
             width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #d1d5db;
-            border-radius: 8px;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
             font-size: 1rem;
             transition: border-color 0.3s;
         }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
+        
+        .form-control:focus {
+            border-color: var(--primary);
             outline: none;
-            border-color: #059669;
         }
-
-        .checkbox-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
+        
+        .payment-info {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
         }
-
-        .checkbox-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+        
+        .payment-method {
+            margin-bottom: 1rem;
         }
-
-        .checkbox-item input[type="checkbox"] {
-            width: auto;
+        
+        .payment-method h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
         }
-
-        .back-btn {
-            margin-bottom: 1.5rem;
-            background: none;
-            border: none;
-            color: #059669;
-            font-size: 1rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: 600;
-        }
-
-        .back-btn:hover {
-            color: #047857;
-        }
-
-        /* Footer */
-        .footer {
-            background: #1f2937;
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: var(--primary);
             color: white;
-            padding: 3rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
             text-align: center;
         }
-
-        .footer h3 {
-            margin-bottom: 1.5rem;
+        
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
         }
-
-        .footer-contact {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-contact div {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .footer p {
-            color: #9ca3af;
-            margin-top: 1rem;
-        }
-
-        /* Hidden class */
-        .hidden {
-            display: none !important;
-        }
-
-        /* Loading Spinner */
-        .loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255,255,255,.3);
-            border-radius: 50%;
-            border-top-color: white;
-            animation: spin 1s ease-in-out infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* Alert Messages */
-        .alert {
-            padding: 1rem;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            display: none;
-        }
-
-        .alert.show {
+        
+        .btn-block {
             display: block;
+            width: 100%;
         }
-
-        .alert-success {
-            background: #d1fae5;
-            color: #065f46;
-            border: 1px solid #059669;
-        }
-
-        .alert-error {
-            background: #fee2e2;
-            color: #991b1b;
-            border: 1px solid #dc2626;
-        }
-
-        /* Progress Bar */
-        .progress-container {
+        
+        .reviews-section {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 2rem;
             margin: 2rem 0;
         }
-
-        .progress-bar {
-            height: 10px;
-            background: #e5e7eb;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: #059669;
-            width: 0%;
-            transition: width 0.5s ease;
-        }
-
-        .progress-text {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 0.5rem;
-            color: #6b7280;
-        }
-
-        /* Stats Section */
-        .stats-section {
-            background: white;
-            padding: 4rem 2rem;
-        }
-
-        .stats-grid {
+        
+        .review-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
         }
-
-        .stat-card {
-            background: #f9fafb;
-            border-radius: 12px;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            border-left: 4px solid #059669;
+        
+        .review-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
         }
-
-        .stat-number {
-            font-size: 2.5rem;
+        
+        .reviewer {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .reviewer-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
             font-weight: bold;
-            color: #059669;
-            margin-bottom: 0.5rem;
+            margin-right: 1rem;
         }
-
-        .stat-label {
-            color: #6b7280;
-            font-size: 1.1rem;
+        
+        .reviewer-info h4 {
+            color: var(--primary);
+            margin-bottom: 0.2rem;
         }
-
-        /* Setup Instructions */
-        .setup-instructions {
-            background: white;
-            border-radius: 12px;
-            padding: 2rem;
-            margin-top: 2rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        
+        .reviewer-info p {
+            color: #666;
+            font-size: 0.9rem;
         }
-
-        .setup-step {
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid #e5e7eb;
+        
+        .review-text {
+            color: #555;
+            font-style: italic;
+            line-height: 1.5;
         }
-
-        .setup-step:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .setup-step h3 {
-            color: #059669;
-            margin-bottom: 0.5rem;
-        }
-
-        .code-block {
-            background: #1f2937;
-            color: #f9fafb;
+        
+        .whatsapp-group {
+            background: #25D366;
+            color: white;
             padding: 1rem;
             border-radius: 8px;
-            font-family: monospace;
-            margin: 0.5rem 0;
-            overflow-x: auto;
+            text-align: center;
+            margin: 1.5rem 0;
         }
-
-        /* Responsive */
+        
+        .whatsapp-group a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
+        
         @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: white;
+            .main-content {
                 flex-direction: column;
-                padding: 1rem;
-                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             }
-
-            .nav-menu.active {
-                display: flex;
+            
+            .category-nav {
+                width: 100%;
             }
-
-            .hamburger {
-                display: block;
-            }
-
-            .hero h1 {
+            
+            header h1 {
                 font-size: 2rem;
             }
-
-            .hero h2 {
-                font-size: 1.2rem;
-            }
-
-            .services-grid {
+            
+            .review-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .donation-buttons {
-                flex-direction: column;
-            }
-
-            .donation-buttons .btn {
-                width: 100%;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo" onclick="showPage('home')">
-                <i class="fas fa-book-quran"></i>
-                <div class="logo-text">
-                    <h1>কর্জে হাসানা</h1>
-                    <p>যুব জামায়াত, বদলগাছী</p>
-                </div>
-            </div>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#" onclick="showPage('home')"><i class="fas fa-home"></i> হোম</a></li>
-                <li><a href="#" onclick="showPage('apply')">আবেদন করুন</a></li>
-                <li><a href="#" onclick="showPage('donate')">দান করুন</a></li>
-                <li><a href="#" onclick="showPage('volunteer')">স্বেচ্ছাসেবী</a></li>
-                <li><a href="#" onclick="showPage('stats')"></a></li>
-                <li><a href="#" onclick="showPage('setup')"><i class="fas fa-cog"></i></a></li>
-            </ul>
-            <div class="hamburger" onclick="toggleMenu()">
-                <i class="fas fa-bars"></i>
+    <header>
+        <div class="container">
+            <h1>ইসলামিক ফাইন্যান্স কোর্স</h1>
+            <p>বাস্তব জ্ঞান ও দক্ষতা অর্জনের সুযোগ</p>
+            <div class="instructor">
+                <h3>লেখক - মোহাইমিন পাটোয়ারী - এর থেকে সরাসরি শিখুন!</h3>
             </div>
         </div>
-    </nav>
-
-    <!-- Home Page -->
-    <div id="homePage">
-        <!-- Hero Section -->
-        <section class="hero">
-            <h1>কর্জে হাসানা</h1>
-            <h2>যুব জামায়াত, বদলগাছী, নওগাঁ</h2>
-            <p>আসসালামু আলাইকুম, "কর্জে হাসানা" যুব জামায়াত বদলগাছীর উদ্যোগে পরিচালিত সম্পূর্ণ সুদমুক্ত ইসলামিক আর্থিক সহায়তা প্ল্যাটফর্ম। এটি বদলগাছী, নওগাঁ এলাকার মুসলিম ভাই-বোনদের ইসলামিক আর্থিক সহায়তা প্রদানের জন্য নিবেদিত।</p>
-        </section>
-
-        <!-- Quran Verses -->
-        <div class="container quran-section">
-            <h2 class="section-title">কুরআনে কর্জে হাসানা সম্পর্কে</h2>
+    </header>
+    
+    <div class="container">
+        <div class="main-content">
+            <nav class="category-nav">
+                <h2>উপকারভোগী শ্রেণি</h2>
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <button class="nav-btn active" data-target="islamic-finance">ইসলামিক ফাইন্যান্স শিক্ষার্থী</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-btn" data-target="policy-makers">নীতিনির্ধারক / কর্মকর্তা</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-btn" data-target="expats">প্রবাসী বাংলাদেশি</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-btn" data-target="investors">বিনিয়োগকারী / ব্যবসায়ী</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-btn" data-target="entrepreneurs">উদ্যোক্তা</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-btn" data-target="professionals">চাকরিজীবী / পেশাজীবী</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-btn" data-target="students">শিক্ষার্থী</button>
+                    </li>
+                </ul>
+            </nav>
             
-            <div class="quran-verse">
-                <p>যদি তোমরা আল্লাহকে উত্তম ঋণ দাও, তিনি তা তোমাদের জন্য দ্বিগুণ করে দিবেন এবং তোমাদের ক্ষমা করে দিবেন। আল্লাহ গুণগ্রাহী, পরম ধৈর্যশীল</p>
-                <p class="quran-reference">(সূরা তাগাবুন ৬৪:১৭)</p>
-            </div>
-
-            <div class="quran-verse">
-                <p>আল্লাহকে ঋণ দাও উত্তম ঋণ। তোমরা যা কিছু কল্যাণ নিজেদের জন্য আগে পাঠাবে, তা আল্লাহর নিকট (সঞ্চিত) পাবে, তাই উত্তম এবং পুরস্কারের হিসেবে খুব বড়</p>
-                <p class="quran-reference">(সূরা মুযযাম্মিল ৭৩:২০)</p>
-            </div>
-
-            <div class="quran-verse">
-                <p>তোমরা যা ভালবাস তা হতে ব্যয় না করা পর্যন্ত তোমরা কখনই কল্যাণ লাভ করতে পারবেনা; এবং তোমরা যা কিছুই ব্যয় কর, আল্লাহ তা জ্ঞাত আছেন</p>
-                <p class="quran-reference">(সূরা আলে ইমরান ৩:৯২)</p>
-            </div>
-
-            <div class="quran-verse">
-                <p>কে আছে যে আল্লাহকে দিবে উত্তম ঋণ? তাহলে তিনি বহুগুণে একে বৃদ্ধি করবেন এবং তার জন্য রয়েছে মহা পুরস্কার।</p>
-                <p class="quran-reference">(সূরা হাদীদ ৫৭:১১)</p>
-            </div>
-        </div>
-
-        <!-- Services -->
-        <section class="services">
-            <div class="container">
-                <h2 class="section-title">কর্জে হাসানা ফান্ড থেকে যেসব ক্ষেত্রে সহযোগিতা করা হয়</h2>
-                <p style="text-align: center; color: #6b7280; margin-bottom: 2rem; font-size: 1.1rem;">সম্পূর্ণ সুদমুক্ত ঋণ - ইসলামিক শরীয়াহ অনুযায়ী</p>
+            <div class="content-display">
+                <div id="islamic-finance" class="category-content active">
+                    <div class="category-header">
+                        <div class="category-icon">১</div>
+                        <h2 class="category-title">ইসলামিক ফাইন্যান্স শিক্ষার্থী</h2>
+                    </div>
+                    <p class="category-description">
+                        যারা ইসলামিক ব্যাংকিং, ইনভেস্টমেন্ট এবং তাকাফুল (ইসলামিক বীমা) সম্পর্কে জানতে আগ্রহী, তাদের জন্য এই কোর্সটি বিশেষভাবে উপযোগী।
+                    </p>
+                    <h3>কোর্স থেকে যা শিখবেন:</h3>
+                    <ul class="benefits-list">
+                        <li class="benefit-item">
+                            <span class="benefit-icon">✓</span>
+                            <span>শারিয়াহ-সম্মত আর্থিক ব্যবস্থার ধারণা ও প্রয়োগ</span>
+                        </li>
+                        <li class="benefit-item">
+                            <span class="benefit-icon">✓</span>
+                            <span>কনভেনশনাল অর্থব্যবস্থার পরিবর্তে ইসলামী নীতির ওপর ভিত্তি করে কাজ করার দক্ষতা</span>
+                        </li>
+                        <li class="benefit-item">
+                            <span class="benefit-icon">✓</span>
+                            <span>ইসলামিক ব্যাংকিং ও তাকাফুলের বাস্তব প্রয়োগ</span>
+                        </li>
+                        <li class="benefit-item">
+                            <span class="benefit-icon">✓</span>
+                            <span>ইসলামিক ইনভেস্টমেন্টের নীতিমালা ও সুযোগ</span>
+                        </li>
+                    </ul>
+                </div>
                 
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <h3>শিক্ষা সহায়তা</h3>
-                        <p>পরীক্ষার ফি, রেজিস্ট্রেশন ফি, বই-খাতা ইত্যাদি প্রদান করতে অসমর্থ শিক্ষার্থীদের জন্য কর্জে হাসানা (সুদমুক্ত ঋণ) প্রদান করি।</p>
-                        <button class="btn btn-primary" onclick="showPage('apply')">
-                            আবেদন করুন <i class="fas fa-arrow-right"></i>
-                        </button>
+                <div id="policy-makers" class="category-content">
+                    <div class="category-header">
+                        <div class="category-icon">২</div>
+                        <h2 class="category-title">নীতিনির্ধারক / কর্মকর্তা</h2>
                     </div>
-
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <h3>নির্ভরশীল ফান্ড</h3>
-                        <p>যারা স্বাবলম্বী হতে চান বা ইতিমধ্যে এই করার জন্য পদক্ষেপ নিচ্ছেন তাদের আর্থিক সহায়তার প্রয়োজন হতে পারে। আমরা তাদের কর্জে হাসানা অফার করি।</p>
-                        <button class="btn btn-primary" onclick="showPage('apply')">
-                            আবেদন করুন <i class="fas fa-arrow-right"></i>
-                        </button>
+                    <p class="category-description">
+                        সরকারি কর্মকর্তা, নীতিনির্ধারক, এবং যারা ট্যাক্স, মানি লন্ডারিং, সরকারি অর্থনীতি বা ফাইন্যান্স পলিসি নিয়ে কাজ করেন।
+                    </p>
+                    <h3>কোর্স থেকে যা শিখবেন:</h3>
+                    <ul class="benefits-list">
+                        <li class="benefit-item">
+                            <span class="benefit-icon">✓</span>
+                            <span>অর্থনৈতিক টুলস ও বাস্তব জ্ঞানের প্রয়োগ</span>
+                        </li>
+                        <li class="benefit-item">
+                            <span class="benefit-icon">✓</span>
+                            <span>দেশের অর্থনৈতিক নীতিমালা ও বাস্তবায়ন ব্যবস্থা সম্পর্কে গভীর ধারণা</span>
+                        </li>
+                        <li class="benefit-item">
+                            <span class="benefit-icon">✓</span>
+                            <span>ইসলামিক অর্থনীতির আলোকে নীতি প্রণয়নের কৌশল</span>
+                        </li>
+                        <li class="benefit-item">
+                            <span class="benefit-icon">✓</span>
+                            <span>টেকসই অর্থনৈতিক উন্নয়নের জন্য প্রয়োজনীয় দক্ষতা</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div id="expats" class="category-content">
+                    <div class="category-header">
+                        <div class="category-icon">৩</div>
+                        <h2 class="category-title">প্রবাসী বাংলাদেশি</h2>
                     </div>
-
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-heartbeat"></i>
-                        </div>
-                        <h3>চিকিৎসা সহায়তা</h3>
-                        <p>কেউ যদি দুর্ঘটনায় স্বাস্থ্যহীন হয় অথবা জরুরী চিকিৎসা সহায়তা প্রয়োজন পড়ে, আমরা তাকে কর্জে হাসানা (সুদমুক্ত ঋণ) প্রদান করি।</p>
-                        <button class="btn btn-primary" onclick="showPage('apply')">
-                            আবেদন করুন <i class="fas fa-arrow-right"></i>
-                        </button>
+                    <p class="category-description">
+                        যারা বিদেশে থাকেন কিন্তু বাংলাদেশে বিনিয়োগ করতে চান বা ব্যবসা শুরু করতে চান, তাদের জন্য এটি গুরুত্বপূর্ণ।
+                    </p>
+                    <h3>কোর্স থেকে যা শিখবেন:</h3>
+                    <ul class="benefits-list">
+                        <li class="benefit-item">
+                            <span class="benefit-icon">✓</span>
+                            <span>এক্সপোর্ট-ইম্পোর্ট, এলসি (Letter of Credit), ডলার সিস্টেম সম্পর্কে ধারণা</span>
+                        </li>
+                        <li class="benefit-item">
+                            <span class="benefit-icon">✓</span>
+                            <span>আন্তর্জাতিক লেনদেন ও ব্যবসায়িক পরিকল্পনা</span>
+                        </li>
+                        <li class="benefit-item">
+                            <span class="benefit-icon">✓</span>
+                            <span>বাংলাদেশে বিনিয়োগের আইনি ও প্রাতিষ্ঠানিক কাঠামো</span>
+                        </li>
+                        <li class="benefit-item">
+                            <span class="benefit-icon">✓</span>
+                            <span>শারিয়াহ-সম্মত বিনিয়োগের সুযোগ</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div id="investors" class="category-content">
+                    <div class="category-header">
+                        <div class="category-icon">৪</div>
+                        <h2 class="category-title">বিনিয়োগকারী / ব্যবসায়ী</h2>
                     </div>
+                    <p class="category-description">
+                        যারা স্টক মার্কেট, মিউচুয়াল ফান্ড, ফরেক্স বা ক্রিপ্টো বিনিয়োগে আগ্রহী, তারা এই কোর্স থেকে শারিয়াহ-সম্মত বিনিয়োগের জ্ঞান অর্জন করতে পারবেন।
+                    </p>
+                    <h3>কোর্স থেকে যা শিখবেন:</h3>
+                    <ul class="benefits-list">
+                        <li class="benefit-item">
+                            <span class="benefit-icon">✓</span>
+                            <span>ইসলামী দৃষ্টিকোণ থেকে নিরাপদ ও বৈধ বিনিয়োগের ধারণা</span>
+                        </li>
+                        <li class="benefit-item">
+                            <span class="benefit-icon">✓</span>
+                            <span>শারিয়াহ-সম্মত বিনিয়োগের নীতিমালা</span>
+                        </li>
+                        <li class="benefit-item">
+                            <span class="benefit-icon">✓</span>
+                            <span>বিভিন্ন বিনিয়োগ মাধ্যমের ইসলামিক মূল্যায়ন</span>
+                        </li>
+                        <li class="benefit-item">
+                            <span class="benefit-icon">✓</span>
+                            <span>ঝুঁকি ব্যবস্থাপনা ও বিনিয়োগ কৌশল</span>
+                        </li>
+                    </ul>
                 </div>
-            </div>
-        </section>
-
-        <!-- Donation Section -->
-        <section class="donation-section">
-            <div class="container">
-                <i class="fas fa-heart"></i>
-                <h2>আমাদের সাথে যুক্ত হউন - একমাত্র আল্লাহর জন্য</h2>
-                <p>এখানে অনুদান, সাদাকা, সেবা, সুন্দর পরামর্শ দিয়ে সহযোগিতা করুন। আপনার প্রতিটি অবদান আল্লাহর কাছে সংরক্ষিত থাকবে।</p>
-                <div class="donation-buttons">
-                    <button class="btn btn-secondary" onclick="showPage('donate')">
-                        দান/সাদাকা করুন
-                    </button>
-                    <button class="btn btn-primary" onclick="showPage('volunteer')">
-                        স্বেচ্ছাসেবী হউন
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="container">
-                <h3>যোগাযোগ করুন</h3>
-                <div class="footer-contact">
-                    <div>
-                        <i class="fas fa-phone"></i>
-                        <span>+8801650138333</span>
+                
+                <div id="entrepreneurs" class="category-content">
+                    <div class="category-header">
+                        <div class="category-icon">৫</div>
+                        <h2 class="category-title">উদ্যোক্তা</h2>
                     </div>
-                    <div>
-                        <i class="fas fa-envelope"></i>
-                        <span>jubajamayat.badalgachi@gmail.com</span>
+                    <p class="category-description">
+                        যারা নতুন স্টার্টআপ শুরু করছেন বা ছোট ও মাঝারি ব্যবসা পরিচালনা করছেন, তাদের জন্য এই কোর্সে ব্যবসা নিবন্ধন, বিনিয়োগ সংগ্রহ এবং স্কেলআপ করার কৌশল শেখানো হবে।
+                    </p>
+                    <h3>কোর্স থেকে যা শিখবেন:</h3>
+                    <ul class="benefits-list">
+                        <li class="benefit-item">
+                            <span class="benefit-icon">✓</span>
+                            <span>ব্যবসা নিবন্ধন ও আইনি কাঠামো</span>
+                        </li>
+                        <li class="benefit-item">
+                            <span class="benefit-icon">✓</span>
+                            <span>বিনিয়োগ সংগ্রহ ও ব্যবসায়িক পরিকল্পনা প্রণয়ন</span>
+                        </li>
+                        <li class="benefit-item">
+                            <span class="benefit-icon">✓</span>
+                            <span>ব্যবসা স্কেলআপ করার কৌশল</span>
+                        </li>
+                        <li class="benefit-item">
+                            <span class="benefit-icon">✓</span>
+                            <span>ব্যবসাকে আইনি ও আর্থিকভাবে টেকসই করার পদ্ধতি</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div id="professionals" class="category-content">
+                    <div class="category-header">
+                        <div class="category-icon">৬</div>
+                        <h2 class="category-title">চাকরিজীবী / পেশাজীবী</h2>
                     </div>
+                   <p class="category-description">
+                        যারা ব্যাংক, কর্পোরেট, ইন্স্যুরেন্স, এনজিও বা বিভিন্ন আর্থিক প্রতিষ্ঠানে কর্মরত, তারা এই কোর্সের মাধ্যমে ফাইন্যান্সিয়াল ডিসিশন মেকিং, রিপোর্টিং এবং বাজেটিং সম্পর্কে বাস্তব ধারণা পাবেন।
+                    </p>
+                    <h3>কোর্স থেকে যা শিখবেন:</h3>
+                    <ul class="benefits-list">
+                        <li class="benefit-item">
+                            <span class="benefit-icon">✓</span>
+                            <span>ফাইন্যান্সিয়াল ডিসিশন মেকিং দক্ষতা</span>
+                        </li>
+                        <li class="benefit-item">
+                            <span class="benefit-icon">✓</span>
+                            <span>আর্থিক রিপোর্টিং ও বিশ্লেষণ</span>
+                        </li>
+                        <li class="benefit-item">
+                            <span class="benefit-icon">✓</span>
+                            <span>বাজেটিং ও আর্থিক পরিকল্পনা</span>
+                        </li>
+                        <li class="benefit-item">
+                            <span class="benefit-icon">✓</span>
+                            <span>পেশাগত দক্ষতা বৃদ্ধির কৌশল</span>
+                        </li>
+                    </ul>
                 </div>
-                <p>All Rights Reserved by যুব জামায়াত, বদলগাছী, নওগাঁ</p>
-            </div>
-        </footer>
-    </div>
-
-    <!-- Application Page -->
-    <div id="applyPage" class="hidden">
-        <div class="container" style="min-height: 100vh; padding-top: 3rem; padding-bottom: 3rem;">
-            <button class="back-btn" onclick="showPage('home')">
-                <i class="fas fa-arrow-left"></i> হোম পেজে ফিরে যান
-            </button>
-            
-            <div class="form-container">
-                <div class="form-header">
-                    <i class="fas fa-file-alt"></i>
-                    <h2>কর্জে হাসানা আবেদন ফরম</h2>
-                </div>
-
-                <div id="applyAlert" class="alert"></div>
-
-                <div class="form-group">
-                    <label>নাম *</label>
-                    <input type="text" id="applyName" required>
-                </div>
-
-                <div class="form-group">
-                    <label>মোবাইল নম্বর *</label>
-                    <input type="tel" id="applyPhone" required>
-                </div>
-
-                <div class="form-group">
-                    <label>ঠিকানা *</label>
-                    <textarea id="applyAddress" rows="3" required></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label>সহায়তার ধরন *</label>
-                    <select id="applyType" required>
-                        <option value="">নির্বাচন করুন</option>
-                        <option value="শিক্ষা সহায়তা">শিক্ষা সহায়তা</option>
-                        <option value="নির্ভরশীল ফান্ড">নির্ভরশীল ফান্ড</option>
-                        <option value="চিকিৎসা সহায়তা">চিকিৎসা সহায়তা</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>প্রয়োজনীয় পরিমাণ (টাকা) *</label>
-                    <input type="number" id="applyAmount" required>
-                </div>
-
-                <div class="form-group">
-                    <label>বিস্তারিত বিবরণ *</label>
-                    <textarea id="applyDetails" rows="5" placeholder="কেন এই সহায়তার প্রয়োজন তা বিস্তারিত লিখুন" required></textarea>
-                </div>
-
-                <button class="btn btn-primary" onclick="submitApplication()" id="applyBtn">
-                    <i class="fas fa-paper-plane"></i> আবেদন জমা দিন
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Donation Page -->
-    <div id="donatePage" class="hidden">
-        <div class="container" style="min-height: 100vh; padding-top: 3rem; padding-bottom: 3rem;">
-            <button class="back-btn" onclick="showPage('home')">
-                <i class="fas fa-arrow-left"></i> হোম পেজে ফিরে যান
-            </button>
-            
-            <div class="form-container">
-                <div class="form-header">
-                    <i class="fas fa-donate"></i>
-                    <h2>দান/সাদাকা ফরম</h2>
-                    <p>আপনার দান আল্লাহর কাছে কবুল হোক</p>
-                </div>
-
-                <div id="donateAlert" class="alert"></div>
-
-                <div class="form-group">
-                    <label>নাম</label>
-                    <input type="text" id="donateName">
-                </div>
-
-                <div class="form-group">
-                    <label>মোবাইল নম্বর</label>
-                    <input type="tel" id="donatePhone">
-                </div>
-
-                <div class="form-group">
-                    <label>দানের ধরন *</label>
-                    <select id="donateType" required>
-                        <option value="">নির্বাচন করুন</option>
-                        <option value="সাদাকা">সাদাকা</option>
-                        <option value="জাকাত">জাকাত</option>
-                        <option value="ফিতরা">ফিতরা</option>
-                        <option value="কোরবানির চামড়া">কোরবানির চামড়া</option>
-                        <option value="অন্যান্য">অন্যান্য</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>দানের পরিমাণ (টাকা) *</label>
-                    <input type="number" id="donateAmount" required>
-                </div>
-
-                <div class="form-group">
-                    <label>বিস্তারিত (যদি থাকে)</label>
-                    <textarea id="donateDetails" rows="3"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label>দান করার পদ্ধতি *</label>
-                    <div class="checkbox-group">
-                        <div class="checkbox-item">
-                            <input type="radio" id="method_bkash" name="donateMethod" value="বিকাশ">
-                            <label for="method_bkash">বিকাশ</label>
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="radio" id="method_nagad" name="donateMethod" value="নগদ">
-                            <label for="method_nagad">নগদ</label>
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="radio" id="method_bank" name="donateMethod" value="ব্যাংক">
-                            <label for="method_bank">ব্যাংক</label>
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="radio" id="method_cash" name="donateMethod" value="নগদ">
-                            <label for="method_cash">সরাসরি নগদ</label>
-                        </div>
+                
+                <div id="students" class="category-content">
+                    <div class="category-header">
+                        <div class="category-icon">৭</div>
+                        <h2 class="category-title">শিক্ষার্থী</h2>
                     </div>
-                </div>
-
-                <button class="btn btn-secondary" onclick="submitDonation()" id="donateBtn">
-                    <i class="fas fa-hand-holding-heart"></i> দান জমা দিন
-                </button>
-
-                <div style="margin-top: 2rem; padding: 1rem; background: #f3f4f6; border-radius: 8px;">
-                    <h3 style="color: #059669; margin-bottom: 0.5rem;">দান করার মাধ্যম:</h3>
-                    <p><strong>বিকাশ:</strong> 01795635872 (Personal)</p>
-                    <p><strong>নগদ:</strong> 01795635872</p>
-                    <p><strong>ব্যাংক:</strong> ইসলামী ব্যাংক বাংলাদেশ লিমিটেড, বদলগাছী শাখা</p>
-                    <p style="margin-top: 1rem; font-size: 0.9rem; color: #6b7280;">দান করার পর আমাদের সাথে যোগাযোগ করুন</p>
+                    <p class="category-description">
+                        বিশ্ববিদ্যালয়ের শিক্ষার্থীরা—বিশেষত যারা বিজনেস, ইকোনমিক্স, ফাইন্যান্স বা ইঞ্জিনিয়ারিং বিভাগে পড়ছেন—তাদের জন্য এটি একটি মৌলিক ভিত্তি তৈরি করবে।
+                    </p>
+                    <h3>কোর্স থেকে যা শিখবেন:</h3>
+                    <ul class="benefits-list">
+                        <li class="benefit-item">
+                            <span class="benefit-icon">✓</span>
+                            <span>অর্থনীতি ও আর্থিক ব্যবস্থার মূল ধারণা</span>
+                        </li>
+                        <li class="benefit-item">
+                            <span class="benefit-icon">✓</span>
+                            <span>ভবিষ্যৎ ক্যারিয়ারের জন্য প্রয়োজনীয় দক্ষতা</span>
+                        </li>
+                        <li class="benefit-item">
+                            <span class="benefit-icon">✓</span>
+                            <span>ইসলামিক ফাইন্যান্সের মৌলিক নীতিমালা</span>
+                        </li>
+                        <li class="benefit-item">
+                            <span class="benefit-icon">✓</span>
+                            <span>বাস্তব জীবনে অর্থনৈতিক সিদ্ধান্ত গ্রহণের কৌশল</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Volunteer Page -->
-    <div id="volunteerPage" class="hidden">
-        <div class="container" style="min-height: 100vh; padding-top: 3rem; padding-bottom: 3rem;">
-            <button class="back-btn" onclick="showPage('home')">
-                <i class="fas fa-arrow-left"></i> হোম পেজে ফিরে যান
-            </button>
+        
+        <div class="registration-section">
+            <h2 class="section-title">কোর্স রেজিস্ট্রেশন ফর্ম</h2>
+            <p>আগ্রহী প্রশিক্ষণার্থীরা এই ফরম পূরণ করবেন ইনশাআল্লাহ।</p>
             
-            <div class="form-container">
-                <div class="form-header">
-                    <i class="fas fa-hands-helping"></i>
-                    <h2>স্বেচ্ছাসেবক ফরম</h2>
-                    <p>আপনার সময় ও শ্রম দিয়ে আমাদের সহযোগিতা করুন</p>
-                </div>
-
-                <div id="volunteerAlert" class="alert"></div>
-
+            <form id="registration-form">
                 <div class="form-group">
-                    <label>নাম *</label>
-                    <input type="text" id="volunteerName" required>
+                    <label class="form-label" for="name">আপনার নাম *</label>
+                    <input type="text" class="form-control" id="name" required>
                 </div>
-
+                
                 <div class="form-group">
-                    <label>মোবাইল নম্বর *</label>
-                    <input type="tel" id="volunteerPhone" required>
+                    <label class="form-label" for="whatsapp">আপনার WhatsApp নাম্বার *</label>
+                    <input type="tel" class="form-control" id="whatsapp" required>
                 </div>
-
+                
                 <div class="form-group">
-                    <label>ঠিকানা *</label>
-                    <textarea id="volunteerAddress" rows="3" required></textarea>
+                    <label class="form-label" for="phone">আপনার সাথে যোগাযোগের ফোন নাম্বার *</label>
+                    <input type="tel" class="form-control" id="phone" required>
                 </div>
-
+                
                 <div class="form-group">
-                    <label>পেশা *</label>
-                    <input type="text" id="volunteerOccupation" required>
+                    <label class="form-label" for="email">আপনি বিদেশে থাকলে অবশ্যই ইমেইল আইডি দিবেন *</label>
+                    <input type="email" class="form-control" id="email">
                 </div>
-
-                <div class="form-group">
-                    <label>আপনি কিভাবে সাহায্য করতে পারেন *</label>
-                    <div class="checkbox-group">
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="help_fund" value="ফান্ড সংগ্রহ">
-                            <label for="help_fund">ফান্ড সংগ্রহ</label>
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="help_awareness" value="সচেতনতা">
-                            <label for="help_awareness">সচেতনতা তৈরি</label>
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="help_tech" value="প্রযুক্তিগত সহায়তা">
-                            <label for="help_tech">প্রযুক্তিগত সহায়তা</label>
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="help_event" value="ইভেন্ট পরিচালনা">
-                            <label for="help_event">ইভেন্ট পরিচালনা</label>
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="help_other" value="অন্যান্য">
-                            <label for="help_other">অন্যান্য</label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>সাপ্তাহিক কত ঘন্টা সময় দিতে পারবেন?</label>
-                    <select id="volunteerHours">
-                        <option value="১-৫ ঘন্টা">১-৫ ঘন্টা</option>
-                        <option value="৫-১০ ঘন্টা">৫-১০ ঘন্টা</option>
-                        <option value="১০-১৫ ঘন্টা">১০-১৫ ঘন্টা</option>
-                        <option value="১৫+ ঘন্টা">১৫+ ঘন্টা</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>অতিরিক্ত তথ্য (যদি থাকে)</label>
-                    <textarea id="volunteerExtra" rows="3"></textarea>
-                </div>
-
-                <button class="btn btn-primary" onclick="submitVolunteer()" id="volunteerBtn">
-                    <i class="fas fa-user-plus"></i> স্বেচ্ছাসেবক হিসাবে নিবন্ধন করুন
-                </button>
-            </div>
-        </div>
-    </div>
-
-
-
-<script>
-        // Get script URL from localStorage or use default
-        let SCRIPT_URL = localStorage.getItem('korjeHasanaScriptUrl') || 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
-
-        // Page navigation
-        function showPage(pageId) {
-            // Hide all pages
-            document.querySelectorAll('div[id$="Page"]').forEach(page => {
-                page.classList.add('hidden');
-            });
-            
-            // Show selected page
-            document.getElementById(pageId + 'Page').classList.remove('hidden');
-            
-            // Close mobile menu if open
-            document.getElementById('navMenu').classList.remove('active');
-            
-            // If stats page, load stats
-            if (pageId === 'stats') {
-                loadStats();
-            }
-            
-            // If setup page, load saved URL
-            if (pageId === 'setup') {
-                document.getElementById('scriptUrl').value = SCRIPT_URL;
-            }
-        }
-
-        // Toggle mobile menu
-        function toggleMenu() {
-            const navMenu = document.getElementById('navMenu');
-            navMenu.classList.toggle('active');
-        }
-
-        // Save script URL
-        function saveScriptUrl() {
-            const url = document.getElementById('scriptUrl').value;
-            if (url && url.includes('google.com')) {
-                SCRIPT_URL = url;
-                localStorage.setItem('korjeHasanaScriptUrl', url);
-                showAlert('donateAlert', 'Script URL সফলভাবে সেভ হয়েছে!', 'success');
-            } else {
-                showAlert('donateAlert', 'দয়া করে একটি বৈধ Google Apps Script URL দিন', 'error');
-            }
-        }
-
-        // Test connection
-        async function testConnection() {
-            try {
-                const response = await fetch(SCRIPT_URL + '?action=getStats');
-                const result = await response.json();
                 
-                if (result.status === 'success') {
-                    showAlert('donateAlert', 'সংযোগ সফল! Google Sheets-এর সাথে সংযুক্ত হয়েছে।', 'success');
-                } else {
-                    showAlert('donateAlert', 'সংযোগ ব্যর্থ। দয়া করে Script URL চেক করুন।', 'error');
-                }
-            } catch (error) {
-                showAlert('donateAlert', 'সংযোগ ব্যর্থ। দয়া করে Script URL চেক করুন।', 'error');
-            }
-        }
-
-        // Show alert message
-        function showAlert(alertId, message, type) {
-            const alert = document.getElementById(alertId);
-            alert.textContent = message;
-            alert.className = `alert alert-${type} show`;
-            
-            setTimeout(() => {
-                alert.classList.remove('show');
-            }, 5000);
-        }
-
-        // Submit application form
-        async function submitApplication() {
-            const name = document.getElementById('applyName').value;
-            const phone = document.getElementById('applyPhone').value;
-            const address = document.getElementById('applyAddress').value;
-            const type = document.getElementById('applyType').value;
-            const amount = document.getElementById('applyAmount').value;
-            const details = document.getElementById('applyDetails').value;
-            const btn = document.getElementById('applyBtn');
-            
-            if (!name || !phone || !address || !type || !amount || !details) {
-                showAlert('applyAlert', 'দয়া করে সকল প্রয়োজনীয় তথ্য প্রদান করুন', 'error');
-                return;
-            }
-            
-            // Show loading state
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<span class="loading"></span> জমা হচ্ছে...';
-            btn.disabled = true;
-            
-            try {
-                const response = await fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        action: 'submitApplication',
-                        name: name,
-                        phone: phone,
-                        address: address,
-                        type: type,
-                        amount: amount,
-                        details: details,
-                        timestamp: new Date().toLocaleString('bn-BD')
-                    })
-                });
-                
-                const result = await response.json();
-                
-                if (result.status === 'success') {
-                    showAlert('applyAlert', 'আপনার আবেদন সফলভাবে জমা হয়েছে! আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।', 'success');
-                    // Reset form
-                    document.getElementById('applyName').value = '';
-                    document.getElementById('applyPhone').value = '';
-                    document.getElementById('applyAddress').value = '';
-                    document.getElementById('applyType').value = '';
-                    document.getElementById('applyAmount').value = '';
-                    document.getElementById('applyDetails').value = '';
-                } else {
-                    showAlert('applyAlert', 'দুঃখিত, একটি ত্রুটি হয়েছে। পরে আবার চেষ্টা করুন।', 'error');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                showAlert('applyAlert', 'নেটওয়ার্ক ত্রুটি। পরে আবার চেষ্টা করুন।', 'error');
-            } finally {
-                // Restore button
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-            }
-        }
-
-        // Submit donation form
-        async function submitDonation() {
-            const name = document.getElementById('donateName').value;
-            const phone = document.getElementById('donatePhone').value;
-            const type = document.getElementById('donateType').value;
-            const amount = document.getElementById('donateAmount').value;
-            const details = document.getElementById('donateDetails').value;
-            const method = document.querySelector('input[name="donateMethod"]:checked');
-            const btn = document.getElementById('donateBtn');
-            
-            if (!type || !amount || !method) {
-                showAlert('donateAlert', 'দয়া করে সকল প্রয়োজনীয় তথ্য প্রদান করুন', 'error');
-                return;
-            }
-            
-            // Show loading state
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<span class="loading"></span> জমা হচ্ছে...';
-            btn.disabled = true;
-            
-            try {
-                const response = await fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        action: 'submitDonation',
-                        name: name,
-                        phone: phone,
-                        type: type,
-                        amount: amount,
-                        details: details,
-                        method: method.value,
-                        timestamp: new Date().toLocaleString('bn-BD')
-                    })
-                });
-                
-                const result = await response.json();
-                
-                if (result.status === 'success') {
-                    showAlert('donateAlert', 'আপনার দানের তথ্য সফলভাবে জমা হয়েছে! আল্লাহ আপনার দান কবুল করুন।', 'success');
-                    // Reset form
-                    document.getElementById('donateName').value = '';
-                    document.getElementById('donatePhone').value = '';
-                    document.getElementById('donateType').value = '';
-                    document.getElementById('donateAmount').value = '';
-                    document.getElementById('donateDetails').value = '';
-                    document.querySelectorAll('input[name="donateMethod"]').forEach(radio => {
-                        radio.checked = false;
-                    });
-                } else {
-                    showAlert('donateAlert', 'দুঃখিত, একটি ত্রুটি হয়েছে। পরে আবার চেষ্টা করুন।', 'error');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                showAlert('donateAlert', 'নেটওয়ার্ক ত্রুটি। পরে আবার চেষ্টা করুন।', 'error');
-            } finally {
-                // Restore button
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-            }
-        }
-
-        // Submit volunteer form
-        async function submitVolunteer() {
-            const name = document.getElementById('volunteerName').value;
-            const phone = document.getElementById('volunteerPhone').value;
-            const address = document.getElementById('volunteerAddress').value;
-            const occupation = document.getElementById('volunteerOccupation').value;
-            const hours = document.getElementById('volunteerHours').value;
-            const extra = document.getElementById('volunteerExtra').value;
-            const btn = document.getElementById('volunteerBtn');
-            
-            // Get selected help types
-            const helpTypes = [];
-            document.querySelectorAll('.checkbox-group input[type="checkbox"]:checked').forEach(checkbox => {
-                helpTypes.push(checkbox.value);
-            });
-            
-            if (!name || !phone || !address || !occupation || helpTypes.length === 0) {
-                showAlert('volunteerAlert', 'দয়া করে সকল প্রয়োজনীয় তথ্য প্রদান করুন', 'error');
-                return;
-            }
-            
-            // Show loading state
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<span class="loading"></span> জমা হচ্ছে...';
-            btn.disabled = true;
-            
-            try {
-                const response = await fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        action: 'submitVolunteer',
-                        name: name,
-                        phone: phone,
-                        address: address,
-                        occupation: occupation,
-                        helpTypes: helpTypes.join(', '),
-                        hours: hours,
-                        extra: extra,
-                        timestamp: new Date().toLocaleString('bn-BD')
-                    })
-                });
-                
-                const result = await response.json();
-                
-                if (result.status === 'success') {
-                    showAlert('volunteerAlert', 'আপনার স্বেচ্ছাসেবক আবেদন সফলভাবে জমা হয়েছে! আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।', 'success');
-                    // Reset form
-                    document.getElementById('volunteerName').value = '';
-                    document.getElementById('volunteerPhone').value = '';
-                    document.getElementById('volunteerAddress').value = '';
-                    document.getElementById('volunteerOccupation').value = '';
-                    document.getElementById('volunteerHours').value = '১-৫ ঘন্টা';
-                    document.getElementById('volunteerExtra').value = '';
-                    document.querySelectorAll('.checkbox-group input[type="checkbox"]').forEach(checkbox => {
-                        checkbox.checked = false;
-                    });
-                } else {
-                    showAlert('volunteerAlert', 'দুঃখিত, একটি ত্রুটি হয়েছে। পরে আবার চেষ্টা করুন।', 'error');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                showAlert('volunteerAlert', 'নেটওয়ার্ক ত্রুটি। পরে আবার চেষ্টা করুন।', 'error');
-            } finally {
-                // Restore button
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-            }
-        }
-
-        // Load statistics
-        async function loadStats() {
-            try {
-                const response = await fetch(`${SCRIPT_URL}?action=getStats`);
-                const result = await response.json();
-                
-                if (result.status === 'success') {
-                    document.getElementById('totalApplications').textContent = result.data.totalApplications || '0';
-                    document.getElementById('totalDonations').textContent = (result.data.totalDonations || '0') + ' টাকা';
-                    document.getElementById('totalVolunteers').textContent = result.data.totalVolunteers || '0';
-                    document.getElementById('successRate').textContent = result.data.successRate || '0%';
+                <div class="payment-info">
+                    <h3>কোর্স ফি ও পেমেন্ট তথ্য</h3>
+                    <p>আমাদের সেমিস্টার ফি ২,৫০০ টাকা। ক্লাস সাইজ ছোট হবে এবং এক সেমিস্টার পাঁচ মাস চলবে। প্রতি সপ্তাহে এক দিন ক্লাস হবে এবং ক্লাসে নতুন কিছু শেখা, প্রচলিত চিন্তাকে আঘাত করা ও নতুন চিন্তার সাথে পরিচিত করানো হবে।</p>
+                    <p>ক্লাস লাইভ হবে। শিক্ষক সশরীরে উপস্থিত থেকে সরাসরি আলোচনা ও প্রশ্নোত্তরের মাধ্যমে আপনাদেরকে শেখাবেন। (ক্লাস রেকর্ড পরবর্তীতে দেওয়া হবে)। তার পাশপাশি দেওয়া হবে লিখিত কোর্স ম্যাটেরিয়াল যা পড়ে আপনারা যেই কোন সময় ক্লাসের বিষয়াদি স্মরণ করতে পারবেন।</p>
                     
-                    // Update progress bar
-                    const currentAmount = parseInt(result.data.totalDonations) || 0;
-                    const goalAmount = 500000;
-                    const progressPercent = Math.min((currentAmount / goalAmount) * 100, 100);
+                    <div class="form-group">
+                        <label class="form-label">আপনি কি এই কোর্স করতে আগ্রহী? আপনি আগ্রহী হয়ে থাকলে কোন মাধ্যমে টাকা প্রেরণ করতে পারবেন? *</label>
+                        <select class="form-control" required>
+                            <option value="">পেমেন্ট মাধ্যম নির্বাচন করুন</option>
+                            <option value="bkash">বিকাশ</option>
+                            <option value="nagad">নগদ</option>
+                            <option value="rocket">রকেট</option>
+                            <option value="bank">ব্যাংক ট্রান্সফার</option>
+                        </select>
+                    </div>
                     
-                    document.getElementById('goalProgress').style.width = `${progressPercent}%`;
-                    document.getElementById('currentAmount').textContent = currentAmount.toLocaleString('bn-BD');
-                }
-            } catch (error) {
-                console.error('Error loading stats:', error);
-                // Set default values if connection fails
-                document.getElementById('totalApplications').textContent = '127';
-                document.getElementById('totalDonations').textContent = '২,৫০,০০০ টাকা';
-                document.getElementById('totalVolunteers').textContent = '45';
-                document.getElementById('successRate').textContent = '78%';
+                    <div class="payment-method">
+                        <h4>মোবাইলে টাকা পাঠানোর নাম্বার:</h4>
+                        <p><strong>01752675157</strong> (বিকাশ, নগদ ও রকেট)</p>
+                        <p>খরচ সহ মোট ২৫৪০ টাকা পাঠিয়ে অবশ্যই এখানে রেফারেন্স নাম্বার লিখে দিবেন।</p>
+                    </div>
+                    
+                    <div class="payment-method">
+                        <h4>ব্যাংক বিস্তারিত:</h4>
+                        <p>একাউন্ট নাম্বার - <strong>1101030406869</strong></p>
+                        <p>Name - <strong>Mohammod Ali</strong></p>
+                        <p>Dutch Bangla Bank, Dhanmondi Branch</p>
+                        <p>Routing Number - <strong>090261183</strong></p>
+                        <p>টাকা পাঠিয়ে রেফারেন্স নাম্বার এখানে লিখে দিবেন।</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="reference">রেফারেন্স নাম্বার *</label>
+                        <input type="text" class="form-control" id="reference" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="screenshot">টাকা পাঠিয়ে WhatsApp এ 01717-631938 নাম্বারে স্ক্রিনশট পাঠাবেন। *</label>
+                        <input type="file" class="form-control" id="screenshot" accept="image/*" required>
+                    </div>
+                </div>
                 
-                document.getElementById('goalProgress').style.width = '50%';
-                document.getElementById('currentAmount').textContent = '2,50,000';
-            }
-        }
+                <div class="form-group">
+                    <label class="form-label" for="alternative">আপনাকে ফোনে না পাওয়া গেলে বিকল্প যোগাযোগ মাধ্যম</label>
+                    <input type="text" class="form-control" id="alternative">
+                </div>
+                
+                <button type="submit" class="btn btn-block">রেজিস্ট্রেশন সম্পন্ন করুন</button>
+            </form>
+            
+            <div class="whatsapp-group">
+                <p>কোর্সের ব্যাপারে ভর্তিচ্ছু শিক্ষার্থীরা আপডেট জানতে এই গ্রুপে যুক্ত থাকতে পারেন: <a href="#">WhatsApp Group</a></p>
+            </div>
+            
+            <div class="contact-info">
+                <p>কোন জিজ্ঞাসা থাকলে এই নাম্বারে <strong>01717-631938</strong> সা'দ ইবনে মোহাম্মদ সাথে কথা বলে নিশ্চিত হয়ে নিবেন।</p>
+            </div>
+        </div>
+        
+        <div class="reviews-section">
+            <h2 class="section-title">সফল শিক্ষার্থীদের রিভিউ</h2>
+            <p>যারা কোর্স করার পরে উপকার পেয়ে এমন মন্তব্য এবং পরামর্শ দিয়েছেন</p>
+            
+            <div class="review-grid">
+                <div class="review-card">
+                    <div class="reviewer">
+                        <div class="reviewer-avatar">এম</div>
+                        <div class="reviewer-info">
+                            <h4>এম. রহমান</h4>
+                            <p>ব্যাংক কর্মকর্তা</p>
+                        </div>
+                    </div>
+                    <div class="review-text">
+                        "এই কোর্সটি আমার ব্যাংকিং ক্যারিয়ারে আমূল পরিবর্তন এনেছে। ইসলামিক ফাইন্যান্সের বাস্তব প্রয়োগ শিখে এখন আমি গ্রাহকদেরকে আরও ভালোভাবে সেবা দিতে পারছি।"
+                    </div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="reviewer">
+                        <div class="reviewer-avatar">এস</div>
+                        <div class="reviewer-info">
+                            <h4>সাদিয়া ইসলাম</h4>
+                            <p>উদ্যোক্তা</p>
+                        </div>
+                    </div>
+                    <div class="review-text">
+                        "ব্যবসা শুরু করার আগে এই কোর্সটি করা আমার জন্য আশীর্বাদ হয়ে এসেছে। শারিয়াহ সম্মতভাবে ব্যবসা পরিচালনার পদ্ধতি শিখে এখন আমি নিশ্চিন্তে ব্যবসা করছি।"
+                    </div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="reviewer">
+                        <div class="reviewer-avatar">কে</div>
+                        <div class="reviewer-info">
+                            <h4>খালিদ হাসান</h4>
+                            <p>প্রবাসী বাংলাদেশি</p>
+                        </div>
+                    </div>
+                    <div class="review-text">
+                        "বিদেশ থেকে বাংলাদেশে বিনিয়োগ করতে গিয়ে অনেক আইনি জটিলতার সম্মুখীন হচ্ছিলাম। এই কোর্সের মাধ্যমে সবকিছু পরিষ্কারভাবে বুঝতে পেরেছি এবং সফলভাবে বিনিয়োগ করেছি।"
+                    </div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="reviewer">
+                        <div class="reviewer-avatar">এ</div>
+                        <div class="reviewer-info">
+                            <h4>আহমেদ ফারুক</h4>
+                            <p>বিনিয়োগকারী</p>
+                        </div>
+                    </div>
+                    <div class="review-text">
+                        "স্টক মার্কেটে ইসলামিকভাবে বিনিয়োগ করার সঠিক পদ্ধতি জানা ছিল না। এই কোর্সটি আমার সব সংশয় দূর করেছে এবং এখন আমি নিশ্চিন্তে হালাল উপায়ে বিনিয়োগ করছি।"
+                    </div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="reviewer">
+                        <div class="reviewer-avatar">এম</div>
+                        <div class="reviewer-info">
+                            <h4>মাহমুদুল হক</h4>
+                            <p>সরকারি কর্মকর্তা</p>
+                        </div>
+                    </div>
+                    <div class="review-text">
+                        "নীতিনির্ধারণী পর্যায়ে কাজ করার সময় ইসলামিক অর্থনীতির জ্ঞান খুবই গুরুত্বপূর্ণ। এই কোর্সটি আমাকে অর্থনৈতিক নীতি প্রণয়নে নতুন দৃষ্টিভঙ্গি দিয়েছে।"
+                    </div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="reviewer">
+                        <div class="reviewer-avatar">এস</div>
+                        <div class="reviewer-info">
+                            <h4>সাবrina আক্তার</h4>
+                            <p>শিক্ষার্থী</p>
+                        </div>
+                    </div>
+                    <div class="review-text">
+                        "ইসলামিক ফাইন্যান্সে ক্যারিয়ার গড়তে চেয়েছিলাম কিন্তু উপযুক্ত গাইডলাইন পাচ্ছিলাম না। এই কোর্সটি আমার ক্যারিয়ারের পথ সুস্পষ্ট করেছে এবং এখন আমি একটি ইসলামিক ব্যাংকে ইন্টার্নশিপ করছি।"
+                    </div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="reviewer">
+                        <div class="reviewer-avatar">আর</div>
+                        <div class="reviewer-info">
+                            <h4>রফিকুল ইসলাম</h4>
+                            <p>ব্যবসায়ী</p>
+                        </div>
+                    </div>
+                    <div class="review-text">
+                        "ব্যবসায়িক লেনদেন ইসলামিকভাবে কিভাবে করতে হয় তা জানা ছিল না। এই কোর্সটি আমাকে শিখিয়েছে কিভাবে রিবা মুক্তভাবে ব্যবসা পরিচালনা করতে হয়। এখন আমার ব্যবসার আয় দ্বিগুণ হয়েছে।"
+                    </div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="reviewer">
+                        <div class="reviewer-avatar">এন</div>
+                        <div class="reviewer-info">
+                            <h4>নাসির উদ্দিন</h4>
+                            <p>ইঞ্জিনিয়ার</p>
+                        </div>
+                    </div>
+                    <div class="review-text">
+                        "প্রফেশনাল জীবন থেকে ইসলামিক ফাইন্যান্স সম্পূর্ণ আলাদা বিষয় মনে হলেও এই কোর্সটি আমাকে শিখিয়েছে কিভাবে ব্যক্তিগত ফাইন্যান্স ইসলামিকভাবে ম্যানেজ করতে হয়। এখন আমার সঞ্চয় ও বিনিয়োগ উভয়ই হালাল উপায়ে হচ্ছে।"
+                    </div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="reviewer">
+                        <div class="reviewer-avatar">জে</div>
+                        <div class="reviewer-info">
+                            <h4>জুবায়ের আহমেদ</h4>
+                            <p>ফ্রিল্যান্সার</p>
+                        </div>
+                    </div>
+                    <div class="review-text">
+                        "ফ্রিল্যান্সিংয়ে আয় ইসলামিকভাবে কিভাবে বিনিয়োগ করব তা নিয়ে চিন্তিত ছিলাম। এই কোর্সটি আমাকে হালাল বিনিয়োগের বিভিন্ন মাধ্যম সম্পর্কে ধারণা দিয়েছে। এখন আমি নিশ্চিন্তে আমার আয় বিনিয়োগ করছি।"
+                    </div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="reviewer">
+                        <div class="reviewer-avatar">এস</div>
+                        <div class="reviewer-info">
+                            <h4>শামীম আলম</h4>
+                            <p>এনজিও কর্মী</p>
+                        </div>
+                    </div>
+                    <div class="review-text">
+                        "এনজিওতে কাজ করার সময় ইসলামিক অর্থনীতির জ্ঞান খুবই প্রয়োজনীয়। এই কোর্সটি আমাকে সামাজিক উন্নয়ন কাজে ইসলামিক অর্থনৈতিক মডেল প্রয়োগ করতে সাহায্য করেছে। আমাদের প্রকল্পের সফলতা এখন অনেক বেড়ে গেছে।"
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>ইসলামিক ফাইন্যান্স কোর্স - সকলের জন্য বাস্তব জ্ঞান ও দক্ষতা</p>
+            <p>© 2023 মোহাইমিন পাটোয়ারী - সর্বস্বত্ব সংরক্ষিত</p>
+        </div>
+    </footer>
 
-        // Refresh statistics
-        function refreshStats() {
-            loadStats();
-            showAlert('donateAlert', 'পরিসংখ্যান আপডেট করা হয়েছে!', 'success');
-        }
-
-        // Initialize the page
+    <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Show home page by default
-            showPage('home');
+            const navButtons = document.querySelectorAll('.nav-btn');
+            const categoryContents = document.querySelectorAll('.category-content');
             
-            // Close menu when clicking outside on mobile
-            document.addEventListener('click', function(event) {
-                const navMenu = document.getElementById('navMenu');
-                const hamburger = document.querySelector('.hamburger');
-                
-                if (navMenu.classList.contains('active') && 
-                    !navMenu.contains(event.target) && 
-                    !hamburger.contains(event.target)) {
-                    navMenu.classList.remove('active');
-                }
+            // প্রথম ক্যাটাগরি সক্রিয় রাখা
+            navButtons[0].classList.add('active');
+            categoryContents[0].classList.add('active');
+            
+            navButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-target');
+                    
+                    // সকল বাটন ও কন্টেন্ট থেকে active ক্লাস সরানো
+                    navButtons.forEach(btn => btn.classList.remove('active'));
+                    categoryContents.forEach(content => content.classList.remove('active'));
+                    
+                    // ক্লিক করা বাটন ও সংশ্লিষ্ট কন্টেন্টে active ক্লাস যোগ করা
+                    this.classList.add('active');
+                    document.getElementById(targetId).classList.add('active');
+                });
+            });
+            
+            // ফর্ম সাবমিশন
+            const registrationForm = document.getElementById('registration-form');
+            registrationForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('ধন্যবাদ! আপনার রেজিস্ট্রেশন ফর্ম জমা দেওয়া হয়েছে। আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।');
+                registrationForm.reset();
             });
         });
     </script>
